@@ -26,3 +26,16 @@ Then(/^I should see my workout listed$/) do
   expect(page).to have_content('60')
   expect(page).to have_content('High')
 end
+
+When(/^I update the workout details$/) do
+  fill_in 'Activity', with: 'Hiking'
+end
+
+Then(/^I should see the updated details listed$/) do
+  expect(page).to have_content('Hiking')
+  expect(page).not_to have_content('Running')
+end
+
+Given(/^I have added a workout$/) do
+  FactoryGirl.create(:workout)
+end

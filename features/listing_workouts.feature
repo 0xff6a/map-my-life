@@ -14,3 +14,11 @@ Feature: Listing Workouts
       And I fill in the workout details
       And I click "Add"
     Then I should see my workout listed
+
+  Scenario: Editing a Workout
+    Given I have added a workout
+      And I am on the homepage
+    When I click "Edit"
+      And I update the workout details
+      And I click "Update"
+    Then I should see the updated details listed
