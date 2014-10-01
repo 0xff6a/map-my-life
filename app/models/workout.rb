@@ -21,7 +21,7 @@ class Workout < ActiveRecord::Base
                                         message: 'metric must be either min/km or min/mile' },
                                         allow_nil: true
 
-  has_many :targets
+  has_many :targets, dependent: :destroy
 
   def flash_error
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')

@@ -17,6 +17,7 @@ class WorkoutsController < ApplicationController
       flash[:error] = @workout.flash_error
       render :new
     end
+
   end
 
   def edit
@@ -32,6 +33,7 @@ class WorkoutsController < ApplicationController
       flash[:error] = @workout.flash_error
       render :edit
     end
+    
   end
 
   def destroy

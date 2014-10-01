@@ -1,20 +1,42 @@
 <%= form_for(workout) do |f| %>
-  <%= f.label :activity %>
-  <%= f.text_field :activity %>
-  <%= f.label :date %>
-  <%= f.text_field :date %>
-  <%= f.label :duration %>
-  <%= f.text_field :duration %>
-  <%= f.label :intensity %>
-  <%= f.text_field :intensity %>
-  <%= f.label :pace %>
-  <%= f.text_field :pace %>
-  <%= f.label :pace_metric %>
-  <%= f.text_field :pace_metric %>
-  <%= f.label :distance %>
-  <%= f.text_field :distance %>
-  <%= f.label :distance_metric %>
-  <%= f.text_field :distance_metric %>
+  
+  <table>
+
+    <tr>
+      <td><%= f.label :activity %></td>
+      <td><%= f.text_field :activity %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :date %></td>
+      <td><%= f.text_field :date %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :duration %></td>
+      <td><%= f.text_field :duration %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :intensity %></td>
+      <td><%= f.text_field :intensity %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :pace %></td>
+      <td><%= f.text_field :pace %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :pace_metric %></td>
+      <td><%= f.text_field :pace_metric %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :distance %></td>
+      <td><%= f.text_field :distance %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :distance_metric %></td>
+      <td><%= f.text_field :distance_metric %></td>
+    </tr>
+
+  </table>
 
   <%= f.submit btn_description %>
+  
 <% end %>

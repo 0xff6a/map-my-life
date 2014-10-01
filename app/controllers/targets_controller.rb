@@ -15,6 +15,7 @@ class TargetsController < ApplicationController
       flash[:error] = @target.flash_error
       render :new
     end
+
   end
 
 end

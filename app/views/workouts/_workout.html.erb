@@ -1,5 +1,6 @@
 <article class='workout'>
   <section class='workout_details'>
+    
     <%= workout.id %>
     <%= workout.activity %>
     <%= workout.date %>
@@ -7,10 +8,15 @@
     <%= workout.intensity %>
     <%= workout.pace %><%= workout.pace_metric %>
     <%= workout.distance %><%= workout.distance_metric %>
+  
   </section>
+
   <section class='workout_targets'>
+    
     <%= render workout.targets %>
+ 
   </section>
+
   <nav>
 
     <%= link_to 'Add Target', new_workout_target_path(workout) %> | 
@@ -18,4 +24,5 @@
     <%= link_to 'Delete', workout_path(workout), method: :delete %>
 
   </nav>
+  
 </article>
