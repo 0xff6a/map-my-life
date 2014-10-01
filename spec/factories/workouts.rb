@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :workout do
-    activity "MyText"
-    date "MyString"
-    duration "9.99"
-    intensity "MyString"
+    activity "activity"
+    date "12/10/2014"
+    duration "60"
+    intensity "high"
   end
 end

@@ -9,7 +9,7 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    Workout.create(params[:workout].permit(:activity, :date, :duration, :intensity))
+    Workout.create_from(params)
     redirect_to workouts_path
   end
 
@@ -18,8 +18,9 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    Workout.find(params[:id]).update(params[:workout].permit(:activity, :date, :duration, :intensity))
+    Workout.update_from(params)
     redirect_to workouts_path
   end
+
 
 end
