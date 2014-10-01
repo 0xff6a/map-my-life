@@ -39,3 +39,11 @@ end
 Given(/^I have added a workout$/) do
   FactoryGirl.create(:workout)
 end
+
+Given(/^I added an incorrect workout$/) do
+  FactoryGirl.create(:workout, activity: 'Swimming')
+end
+
+Then(/^the workout should be removed$/) do
+  expect(page).not_to have_content('Swimming')
+end

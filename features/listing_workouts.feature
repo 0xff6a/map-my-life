@@ -22,3 +22,9 @@ Feature: Listing Workouts
       And I update the workout details
       And I click "Update"
     Then I should see the updated details listed
+
+  Scenario: Deleting a Workout
+    Given I added an incorrect workout
+      And I am on the homepage
+    When I click "Delete"
+    Then the workout should be removed
