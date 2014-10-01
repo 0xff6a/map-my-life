@@ -9,8 +9,14 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    Workout.create_from(params)
-    redirect_to workouts_path
+    @workout = Workout.create_from(params)
+    
+    if @workout.save
+      redirect_to(workouts_path)
+    else 
+      flash[:error] = @workout.flash_error
+      render :new
+    end
   end
 
   def edit
@@ -18,8 +24,14 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    Workout.update_from(params)
-    redirect_to workouts_path
+    @workout = Workout.update_from(params)
+    
+    if @workout
+      redirect_to(workouts_path)
+    else  
+      flash[:error] = @workout.flash_error
+      render :edit
+    end
   end
 
   def destroy

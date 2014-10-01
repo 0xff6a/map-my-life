@@ -12,6 +12,10 @@ class Workout < ActiveRecord::Base
   validates :intensity, presence:     { message: 'a workout must have an intensity' }
   validates :intensity, inclusion:    { in: INTENSITY , message: 'intensity must be one of bruce lee, high, medium, low' }
 
+  def flash_error
+    errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
+  end
+
   class << self
 
     def create_from(params)
