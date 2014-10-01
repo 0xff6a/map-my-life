@@ -13,3 +13,16 @@ Then(/^I should see the target next to my workout$/) do
     expect(page).to have_content('2014-12-01')
   end
 end
+
+When(/^I fill in invalid details$/) do
+  fill_in 'Pace', with: 4.03
+  fill_in 'Pace metric', with: 'xyz'
+end
+
+Then(/^I should see an target error message$/) do
+  expect(page).to have_content('Error: a target must have a due date')
+end
+
+Then(/^the target should not be saved$/) do
+  expect(page).not_to have_content('4.03')
+end

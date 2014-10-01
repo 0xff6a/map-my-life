@@ -6,8 +6,15 @@ class TargetsController < ApplicationController
   end
 
   def create
-    Workout.find(params[:workout_id]).targets.create_from(params)
-    redirect_to workouts_path
+    @workout = Workout.find(params[:workout_id])
+    @target = @workout.targets.create_from(params)
+
+    if @target.save
+      redirect_to workouts_path
+    else
+      flash[:error] = @target.flash_error
+      render :new
+    end
   end
 
 end
