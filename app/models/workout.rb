@@ -16,6 +16,8 @@ class Workout < ActiveRecord::Base
   validate  :if_paced_has_metric,       message: 'a paced workout must have a metric' 
   validates :pace_metric, inclusion:  { in: METRICS , message: 'metric must be either min/km or min/mile' }
 
+  has_many :targets
+
   def flash_error
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
   end

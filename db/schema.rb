@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001170256) do
+ActiveRecord::Schema.define(version: 20141001191856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20141001170256) do
     t.decimal  "distance"
     t.string   "distance_metric"
     t.date     "due_date"
+    t.integer  "workout_id"
   end
+
+  add_index "targets", ["workout_id"], name: "index_targets_on_workout_id", using: :btree
 
   create_table "workouts", force: true do |t|
     t.text     "activity"

@@ -6,7 +6,7 @@ class TargetsController < ApplicationController
   end
 
   def create
-    target = Target.create(params[:target].permit(:pace, :pace_metric, :distance, :distance_metric, :due_date))
+    Workout.find(params[:workout_id]).targets.create(params[:target].permit(:pace, :pace_metric, :distance, :distance_metric, :due_date))
     redirect_to workouts_path
   end
 
