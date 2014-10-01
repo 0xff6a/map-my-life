@@ -33,7 +33,9 @@ class Workout < ActiveRecord::Base
         :activity, 
         :date, 
         :duration, 
-        :intensity
+        :intensity,
+        :pace,
+        :metric
       ]
     end
 
