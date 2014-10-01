@@ -11,10 +11,13 @@ class Workout < ActiveRecord::Base
   validates :duration,  numericality: { message: 'duration must be a number' }
   
   validates :intensity, presence:     { message: 'a workout must have an intensity' }
-  validates :intensity, inclusion:    { in: INTENSITIES , message: 'intensity must be one of bruce lee, high, medium, low' }
+  validates :intensity, inclusion:    { in: INTENSITIES , 
+                                        message: 'intensity must be one of bruce lee, high, medium, low' }
 
-  validate  :if_paced_has_metric,       message: 'a paced workout must have a metric' 
-  validates :pace_metric, inclusion:  { in: METRICS , message: 'metric must be either min/km or min/mile' }
+  validate  :paced_attributes              
+
+  validates :pace_metric, inclusion:  { in: METRICS , 
+                                        message: 'metric must be either min/km or min/mile' }
 
   has_many :targets
 
@@ -22,9 +25,11 @@ class Workout < ActiveRecord::Base
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
   end
 
-  def if_paced_has_metric
-    if pace.present? && !pace_metric.present?
-      errors.add(:pace_metric, 'a paced workout must have a metric' ) 
+  def paced_attributes
+    if pace.present?
+      errors.add(:pace_metric, 'a paced workout must have a metric') if !pace_metric.present?
+      errors.add(:distance, 'a paced workout must have a distance')  if !distance.present?
+      errors.add(:distance_metric, 'a paced workout must have a distance metric')  if !distance_metric.present?
     end
   end
 
