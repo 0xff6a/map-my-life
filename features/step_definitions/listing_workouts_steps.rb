@@ -47,3 +47,20 @@ end
 Then(/^the workout should be removed$/) do
   expect(page).not_to have_content('Swimming')
 end
+
+Given(/^I create an invalid workout$/) do
+  visit '/'
+  click_on 'New Workout'
+  fill_in 'Activity', with: 'Running'
+  fill_in 'Date', with: ''
+  fill_in 'Duration', with: 60
+  fill_in 'Intensity', with: 'High'
+end
+
+Then(/^I should see an error message$/) do
+  expect(page).to have_content('Error: a workout must have a date')
+end
+
+Then(/^the workout should not be saved$/) do
+  expect(page).not_to have_content('Boxing')
+end

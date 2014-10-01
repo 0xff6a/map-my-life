@@ -28,3 +28,9 @@ Feature: Listing Workouts
       And I am on the homepage
     When I click "Delete"
     Then the workout should be removed
+
+  Scenario: Adding an Invalid Workout
+    Given I create an invalid workout
+    When I click "Add"
+    Then I should see an error message
+      And the workout should not be saved
