@@ -7,6 +7,8 @@ FactoryGirl.define do
     duration "60"
     intensity "high"
     pace "4.15"
-    metric "min/km"
+    pace_metric "min/km"
+    distance "5"
+    distance_metric "km"
   end
 end

@@ -13,16 +13,16 @@ class Workout < ActiveRecord::Base
   validates :intensity, presence:     { message: 'a workout must have an intensity' }
   validates :intensity, inclusion:    { in: INTENSITIES , message: 'intensity must be one of bruce lee, high, medium, low' }
 
-  validate :if_paced_has_metric,        message: 'a paced workout must have a metric' 
-  validates :metric, inclusion:       { in: METRICS , message: 'metric must be either min/km or min/mile' }
+  validate  :if_paced_has_metric,       message: 'a paced workout must have a metric' 
+  validates :pace_metric, inclusion:  { in: METRICS , message: 'metric must be either min/km or min/mile' }
 
   def flash_error
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
   end
 
   def if_paced_has_metric
-    if pace.present? && !metric.present?
-      errors.add(:metric, 'a paced workout must have a metric' ) 
+    if pace.present? && !pace_metric.present?
+      errors.add(:pace_metric, 'a paced workout must have a metric' ) 
     end
   end
 
@@ -45,7 +45,9 @@ class Workout < ActiveRecord::Base
         :duration, 
         :intensity,
         :pace,
-        :metric
+        :pace_metric,
+        :distance,
+        :distance_metric
       ]
     end
 

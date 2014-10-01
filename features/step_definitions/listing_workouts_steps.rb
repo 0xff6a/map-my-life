@@ -18,8 +18,10 @@ When(/^I fill in the workout details$/) do
   fill_in 'Date', with: '5/10/2014'
   fill_in 'Duration', with: 60
   fill_in 'Intensity', with: 'high'
+  fill_in 'Distance', with: '5'
+  fill_in 'Distance metric', with: 'km'
   fill_in 'Pace', with: '4.15'
-  fill_in 'Metric', with: 'min/km'
+  fill_in 'Pace metric', with: 'min/km'
 end
 
 Then(/^I should see my workout listed$/) do
@@ -27,6 +29,7 @@ Then(/^I should see my workout listed$/) do
   expect(page).to have_content('2014-10-05')
   expect(page).to have_content('60')
   expect(page).to have_content('high')
+  expect(page).to have_content('5.0km')
   expect(page).to have_content('4.15min/km')
 end
 
