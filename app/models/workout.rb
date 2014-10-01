@@ -30,8 +30,8 @@ class Workout < ActiveRecord::Base
   def paced_attributes
     if pace.present?
       errors.add(:pace_metric, 'a paced workout must have a metric') if !pace_metric.present?
-      errors.add(:distance, 'a paced workout must have a distance')  if !distance.present?
-      errors.add(:distance_metric, 'a paced workout must have a distance metric')  if !distance_metric.present?
+      errors.add(:distance, 'a paced workout must have a distance') if !distance.present?
+      errors.add(:distance_metric, 'a paced workout must have a distance metric') if !distance_metric.present?
     end
   end
 
