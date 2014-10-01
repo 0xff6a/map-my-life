@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001144453) do
+ActiveRecord::Schema.define(version: 20141001151240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "workouts", force: true do |t|
     t.text     "activity"
-    t.string   "date"
     t.decimal  "duration"
     t.string   "intensity"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "pace"
     t.string   "metric"
+    t.date     "date"
   end
 
 end

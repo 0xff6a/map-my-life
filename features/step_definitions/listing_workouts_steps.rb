@@ -24,7 +24,7 @@ end
 
 Then(/^I should see my workout listed$/) do
   expect(page).to have_content('Running')
-  expect(page).to have_content('5/10/2014')
+  expect(page).to have_content('2014-10-05')
   expect(page).to have_content('60')
   expect(page).to have_content('high')
   expect(page).to have_content('4.15min/km')
