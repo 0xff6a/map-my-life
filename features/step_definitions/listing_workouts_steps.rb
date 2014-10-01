@@ -17,14 +17,14 @@ When(/^I fill in the workout details$/) do
   fill_in 'Activity', with: 'Running'
   fill_in 'Date', with: '5/10/2014'
   fill_in 'Duration', with: 60
-  fill_in 'Intensity', with: 'High'
+  fill_in 'Intensity', with: 'high'
 end
 
 Then(/^I should see my workout listed$/) do
   expect(page).to have_content('Running')
   expect(page).to have_content('5/10/2014')
   expect(page).to have_content('60')
-  expect(page).to have_content('High')
+  expect(page).to have_content('high')
 end
 
 When(/^I update the workout details$/) do
@@ -54,7 +54,7 @@ Given(/^I create an invalid workout$/) do
   fill_in 'Activity', with: 'Running'
   fill_in 'Date', with: ''
   fill_in 'Duration', with: 60
-  fill_in 'Intensity', with: 'High'
+  fill_in 'Intensity', with: 'high'
 end
 
 Then(/^I should see an error message$/) do
