@@ -5,6 +5,7 @@ Feature:
 
   Scenario: Adding a New Target
     Given I have added a workout
+      And I am on the homepage
     When I click "Add Target"
       And I fill in the target details
       And I click "Set"

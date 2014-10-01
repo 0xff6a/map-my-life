@@ -1,0 +1,14 @@
+<%= form_for [@workout, @target] do |f| %>
+  <%= f.label :pace %>
+  <%= f.text_field :pace %>
+  <%= f.label :pace_metric %>
+  <%= f.text_field :pace_metric %>
+  <%= f.label :distance %>
+  <%= f.text_field :distance%>
+  <%= f.label :distance_metric %>
+  <%= f.text_field :distance_metric %>
+  <%= f.label :due_date %>
+  <%= f.text_field :due_date %>
+
+  <%= f.submit 'Set' %>
+<% end %>
