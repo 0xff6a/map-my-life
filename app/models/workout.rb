@@ -12,12 +12,14 @@ class Workout < ActiveRecord::Base
   
   validates :intensity, presence:     { message: 'a workout must have an intensity' }
   validates :intensity, inclusion:    { in: INTENSITIES , 
-                                        message: 'intensity must be one of bruce lee, high, medium, low' }
+                                        message: 'intensity must be one of bruce lee, high, medium, low' },
+                                        allow_nil: true
 
   validate  :paced_attributes              
 
   validates :pace_metric, inclusion:  { in: METRICS , 
-                                        message: 'metric must be either min/km or min/mile' }
+                                        message: 'metric must be either min/km or min/mile' },
+                                        allow_nil: true
 
   has_many :targets
 
