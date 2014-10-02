@@ -3,6 +3,8 @@ class Workout < ActiveRecord::Base
   INTENSITIES = %w(bruce lee high medium low)
   METRICS     = %w(min/km min/mile)
 
+  has_and_belongs_to_many :targets
+
   validates :activity,  presence:     { message: 'a workout must have an activity' }
   
   validates :date,      presence:     { message: 'a workout must have a date' }
@@ -20,8 +22,6 @@ class Workout < ActiveRecord::Base
   validates :pace_metric, inclusion:  { in: METRICS , 
                                         message: 'metric must be either min/km or min/mile' },
                                         allow_nil: true
-
-  has_many :targets, dependent: :destroy
 
   def flash_error
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')

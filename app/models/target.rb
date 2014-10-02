@@ -3,9 +3,7 @@ class Target < ActiveRecord::Base
   PACE_METRICS     = %w(min/km min/mile)
   DISTANCE_METRICS = %w(km mile)
 
-  belongs_to :workout
-
-  validates :workout_id,      presence:     { message: 'a target must be assigned a workout' }
+  has_and_belongs_to_many :workouts
   
   validates :pace,            presence:     { message: 'a target must have a pace' }
   validates :pace,            numericality: { message: 'the pace must be numeric' }

@@ -7,6 +7,5 @@ FactoryGirl.define do
     distance "5"
     distance_metric "km"
     due_date Time.now + 60*60*24
-    workout_id "1"
   end
 end

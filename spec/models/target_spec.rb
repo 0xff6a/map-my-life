@@ -3,13 +3,6 @@ require 'rails_helper'
 RSpec.describe Target, :type => :model do
 
   context 'validations' do
-    
-    it 'must belong to a workout' do
-      target = FactoryGirl.build(:target, workout_id: nil)
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:workout_id]).to include(
-          'a target must be assigned a workout')
-    end
 
     it 'should not be valid without a pace' do
       target = FactoryGirl.build(:target, pace: nil)
