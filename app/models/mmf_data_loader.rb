@@ -29,9 +29,12 @@ class MMFDataLoader
   def params_workouts
     raw = raw_workouts
     {
-      activity: activity_from(raw),
-      duration: duration_from(raw),
-      pace:     pace_from(raw)
+      activity:         activity_from(raw),
+      duration:         duration_from(raw),
+      pace:             pace_from(raw),
+      pace_metric:     'min/km',
+      distance:         distance_from(raw),
+      distance_metric: 'km'
     }
   end
 
@@ -47,6 +50,10 @@ class MMFDataLoader
     ms_to_min_km(raw_workout['aggregates']['speed_avg'].to_f)
   end
 
+  def distance_from(raw_workout)
+    raw_workout['aggregates']['distance_total'].to_f * m_to_km
+  end
+
   def seconds_to_min
     ( 1.0 / 60 )
   end
@@ -54,6 +61,10 @@ class MMFDataLoader
   def ms_to_min_km(value)
     raw = (1000 / ( 60.0 * value))
     raw.floor + (raw - raw.floor) * 0.6
+  end
+
+  def m_to_km
+    1.0 / 1000
   end
 
   def valid?(format)

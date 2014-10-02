@@ -76,7 +76,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the distance' do
-      expect(loader.my_workouts(:params)[:distance]).to eq '9.74'
+      expect(loader.my_workouts(:params)[:distance].round(2)).to eq 9.74
     end
 
     it 'sets the distance metric to km' do
