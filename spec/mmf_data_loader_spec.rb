@@ -3,16 +3,16 @@ require 'rails_helper'
 describe MMFDataLoader do
   
   let(:loader)  { MMFDataLoader.new   }
-  let(:raw)     { loader.raw_workouts }
+  # let(:raw)     { loader.raw_workouts }
 
-  context 'fetching data' do
+  xcontext 'fetching data' do
 
     it 'can do retrieve a list of workouts from MMF' do
       workouts = loader.my_workouts(:raw)
       expect(workouts.first.values).to include('Ran 9.74 km on 26/12/2013')
     end
 
-    xit 'can create workout parameters from MMF data' do
+    it 'can create workout parameters from MMF data' do
       workouts = loader.my_workouts(:params) 
       expect(workouts.first.keys).to eq  [:activity, 
                                           :date, 
@@ -28,7 +28,7 @@ describe MMFDataLoader do
 
   context 'conversions' do
 
-    let(:workout) { { "start_datetime"=>"2013-12-26T10:46:39+00:00", 
+    let(:data)    { { "start_datetime"=>"2013-12-26T10:46:39+00:00", 
                       "name"=>"Ran 9.74 km on 26/12/2013", 
                       "updated_datetime"=>"2013-12-26T14:07:57+00:00", 
                       "created_datetime"=>"2013-12-26T14:07:57+00:00", 
@@ -47,36 +47,40 @@ describe MMFDataLoader do
                       "elapsed_time_total"=>3464.0, "metabolic_energy_total"=>4280232.0}} 
                     }
 
+    before(:each) do
+      allow(loader).to receive(:raw_workouts).and_return(data)
+    end
+
     it 'can convert the activity from id to name' do
-      expect(workout[:activity]).to eq 'Running'
+      expect(loader.my_workouts(:params)[:activity]).to eq 'Running'
     end
 
     it 'can get the start date' do
-      expect(workout[:start_date]).to eq "2013-12-26"
+      expect(loader.my_workouts(:params)[:start_date]).to eq "2013-12-26"
     end
 
     it 'can get the duration' do
-      expect(workout[:duration]).to eq 57
+      expect(loader.my_workouts(:params)[:duration].to_i).to eq 57
     end
 
     it 'can get the intensity' do
-      expect(workout[:intensity]).to eq 'medium'
+      expect(loader.my_workouts(:params)[:intensity]).to eq 'medium'
     end
 
     it 'can get the pace' do
-      expect(workout[:pace]).to eq 'medium'
+      expect(loader.my_workouts(:params)[:pace]).to eq 5.15
     end
 
     it 'sets the pace metric to min/km' do
-      expect(workout[:pace_metric]).to eq 'min/km'
+      expect(loader.my_workouts(:params)[:pace_metric]).to eq 'min/km'
     end
 
     it 'can get the distance' do
-      expect(workout[:distance]).to eq '9.74'
+      expect(loader.my_workouts(:params)[:distance]).to eq '9.74'
     end
 
     it 'sets the distance metric to km' do
-      expect(workout[:distance_metric]).to eq 'km'
+      expect(loader.my_workouts(:params)[:distance_metric]).to eq 'km'
     end
 
   end
