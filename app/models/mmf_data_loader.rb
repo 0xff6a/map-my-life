@@ -9,11 +9,11 @@ class MMFDataLoader
                   }
 
   def initialize
-    # @client = Mmf::Client.new do |config|
-    #   config.client_key    = Rails.application.secrets.mmf_key
-    #   config.client_secret = Rails.application.secrets.mmf_secret
-    #   config.access_token  = Rails.application.secrets.mmf_access_token
-    # end
+    @client = Mmf::Client.new do |config|
+      config.client_key    = Rails.application.secrets.mmf_key
+      config.client_secret = Rails.application.secrets.mmf_secret
+      config.access_token  = Rails.application.secrets.mmf_access_token
+    end
   end
 
   def my_workouts(format = :raw)
@@ -27,17 +27,18 @@ class MMFDataLoader
   end
 
   def params_workouts
-    raw = raw_workouts
-    {
-      activity:         activity_from(raw),
-      date:             date_from(raw),
-      duration:         duration_from(raw),
-      intensity:        intensity_from(raw),
-      pace:             pace_from(raw),
-      pace_metric:     'min/km',
-      distance:         distance_from(raw),
-      distance_metric: 'km'
-    }
+    raw_workouts.map do |raw|
+      {
+        activity:         activity_from(raw),
+        date:             date_from(raw),
+        duration:         duration_from(raw),
+        intensity:        intensity_from(raw),
+        pace:             pace_from(raw),
+        pace_metric:     'min/km',
+        distance:         distance_from(raw),
+        distance_metric: 'km'
+      }
+    end
   end
 
   def activity_from(raw_workout)
@@ -53,7 +54,7 @@ class MMFDataLoader
   end
 
   def intensity_from(raw_workout)
-
+    'medium'
   end
 
   def pace_from(raw_workout)
@@ -69,12 +70,16 @@ class MMFDataLoader
   end
 
   def ms_to_min_km(value)
-    raw = (1000 / ( 60.0 * value))
+    raw = (1000 / ( 60.0 * value + epsilon))
     raw.floor + (raw - raw.floor) * 0.6
   end
 
   def m_to_km
     1.0 / 1000
+  end
+
+  def epsilon
+    0.001
   end
 
   def valid?(format)
