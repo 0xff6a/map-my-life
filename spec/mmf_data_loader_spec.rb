@@ -56,7 +56,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the start date' do
-      expect(loader.my_workouts(:params)[:start_date]).to eq "2013-12-26"
+      expect(loader.my_workouts(:params)[:date]).to eq "2013-12-26"
     end
 
     it 'can get the duration' do

@@ -30,7 +30,9 @@ class MMFDataLoader
     raw = raw_workouts
     {
       activity:         activity_from(raw),
+      date:             date_from(raw),
       duration:         duration_from(raw),
+      intensity:        intensity_from(raw),
       pace:             pace_from(raw),
       pace_metric:     'min/km',
       distance:         distance_from(raw),
@@ -42,8 +44,16 @@ class MMFDataLoader
     ACTIVITY_IDS[raw_workout['_links']['activity_type'][0]['id']]
   end
 
+  def date_from(raw_workout)
+    Time.parse(raw_workout['start_datetime']).strftime("%Y-%m-%d")
+  end
+
   def duration_from(raw_workout)
     raw_workout['aggregates']['active_time_total'].to_i * seconds_to_min
+  end
+
+  def intensity_from(raw_workout)
+
   end
 
   def pace_from(raw_workout)
