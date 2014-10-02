@@ -68,7 +68,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the pace' do
-      expect(loader.my_workouts(:params)[:pace]).to eq 5.15
+      expect(loader.my_workouts(:params)[:pace].round(2)).to eq 5.56
     end
 
     it 'sets the pace metric to min/km' do

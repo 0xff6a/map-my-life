@@ -28,8 +28,6 @@ class MMFDataLoader
 
   def params_workouts
     raw = raw_workouts
-    puts seconds_to_min
-    puts raw['aggregates']['active_time_total'].to_i * seconds_to_min
     {
       activity: activity_from(raw),
       duration: duration_from(raw),
@@ -46,15 +44,16 @@ class MMFDataLoader
   end
 
   def pace_from(raw_workout)
-    raw_workout['aggregates']['speed_avg'].to_f * ms_to_min_km
+    ms_to_min_km(raw_workout['aggregates']['speed_avg'].to_f)
   end
 
   def seconds_to_min
     ( 1.0 / 60 )
   end
 
-  def ms_to_min_km
-    (1000.0 / 60)
+  def ms_to_min_km(value)
+    raw = (1000 / ( 60.0 * value))
+    raw.floor + (raw - raw.floor) * 0.6
   end
 
   def valid?(format)
