@@ -47,6 +47,7 @@ gem 'json'
 gem 'twilio-ruby'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'thin'
+gem 'mmf'
 
 group :production do
   gem 'rails_12factor'
