@@ -20,10 +20,6 @@ module ValidationMessages
 
     def metric_content_msg(attribute)
       "metric must be either #{METRICS[attribute].join(' or ')}"
-    end
-
-    def indefinite_articlerize(word)
-      %w(a e i o u).include?(word[0].downcase) ? "an #{word}" : "a #{word}"
     end 
 
     private
@@ -31,5 +27,9 @@ module ValidationMessages
     def parse(attribute)
       attribute.to_s.gsub('_',' ')
     end 
+
+    def indefinite_articlerize(word)
+      %w(a e i o u).include?(word[0].downcase) ? "an #{word}" : "a #{word}"
+    end
 
 end

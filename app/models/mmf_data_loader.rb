@@ -41,6 +41,10 @@ class MMFDataLoader
     end
   end
 
+  def object_workouts
+    params_workouts.map{ |params| Workout.create(params) }
+  end
+
   def activity_from(raw_workout)
     ACTIVITIES[raw_workout['_links']['activity_type'][0]['id']]
   end
