@@ -54,7 +54,7 @@ class MMFDataLoader
   end
 
   def duration_from(raw_workout)
-    raw_workout['aggregates']['active_time_total'].to_i * seconds_to_min
+    seconds_to_min(raw_workout['aggregates']['active_time_total'])
   end
 
   def intensity_from(raw_workout)
@@ -62,24 +62,24 @@ class MMFDataLoader
   end
 
   def pace_from(raw_workout)
-    ms_to_min_km(raw_workout['aggregates']['speed_avg'].to_f)
+    ms_to_min_km(raw_workout['aggregates']['speed_avg'])
   end
 
   def distance_from(raw_workout)
-    raw_workout['aggregates']['distance_total'].to_f * m_to_km
+    m_to_km(raw_workout['aggregates']['distance_total'])
   end
 
-  def seconds_to_min
-    ( 1.0 / 60 )
+  def seconds_to_min(value)
+    value.to_f / 60
   end
 
   def ms_to_min_km(value)
-    raw = (1000 / ( 60.0 * value + epsilon))
+    raw = (1000 / ( 60.0 * value.to_f + epsilon))
     raw.floor + (raw - raw.floor) * 0.6
   end
 
-  def m_to_km
-    1.0 / 1000
+  def m_to_km(value)
+    value.to_f / 1000
   end
 
   def epsilon
