@@ -1,27 +1,29 @@
 class Target < ActiveRecord::Base
 
+  extend ValidationMessages
+
   PACE_METRICS     = %w(min/km min/mile)
   DISTANCE_METRICS = %w(km mile)
 
   has_and_belongs_to_many :workouts
   
-  validates :pace,            presence:     { message: 'a target must have a pace' }
-  validates :pace,            numericality: { message: 'the pace must be numeric' }
+  validates :pace,            presence:     { message: Proc.new{ presence_msg(:pace)              } }
+  validates :pace,            numericality: { message: Proc.new{ numeric_msg(:pace)               } }
 
-  validates :pace_metric,     presence:     { message: 'a pace must have a metric' }
+  validates :pace_metric,     presence:     { message: Proc.new{ presence_msg(:pace_metric)       } }
   validates :pace_metric,     inclusion:    { in: PACE_METRICS , 
-                                              message: 'metric must be either min/km or min/mile' },
+                                              message: Proc.new{ metric_content_msg(:pace)        } },
                                               allow_nil: true
 
-  validates :distance,        presence:     { message: 'a target must have a distance' }                                        
-  validates :distance,        numericality: { message: 'distance must be numeric' }
+  validates :distance,        presence:     { message: Proc.new{ presence_msg(:distance)          } }                                        
+  validates :distance,        numericality: { message: Proc.new{ numeric_msg(:distance)           } }
 
-  validates :distance_metric, presence:     { message: 'a distance must have a metric' }
+  validates :distance_metric, presence:     { message: Proc.new{ presence_msg(:distance_metric)   } }
   validates :distance_metric, inclusion:    { in: DISTANCE_METRICS , 
-                                              message: 'metric must be either min/km or min/mile' },
+                                              message: Proc.new{ metric_content_msg(:distance)    } },
                                               allow_nil: true
 
-  validates :due_date,        presence:     { message: 'a target must have a due date'} 
+  validates :due_date,        presence:     { message: Proc.new{ presence_msg(:due_date)          } } 
   validate  :future_due_date?
 
   def future_due_date?

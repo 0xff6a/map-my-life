@@ -3,9 +3,9 @@ require 'rails_helper'
 describe MMFDataLoader do
   
   let(:loader)  { MMFDataLoader.new   }
-  let(:raw)     { loader.raw_workouts }
+  # let(:raw)     { loader.raw_workouts }
 
-  context 'fetching data' do
+  xcontext 'fetching data' do
 
     it 'can do retrieve a list of workouts from MMF' do
       workouts = loader.my_workouts(:raw)
@@ -88,8 +88,8 @@ describe MMFDataLoader do
   context 'creating objects' do
 
     xit 'can create workouts from MMF data' do
-      
+
     end
-    
+
   end
 end

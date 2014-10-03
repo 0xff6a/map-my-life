@@ -1,26 +1,28 @@
 class Workout < ActiveRecord::Base
 
+  extend ValidationMessages
+
   INTENSITIES = %w(bruce lee high medium low)
   METRICS     = %w(min/km min/mile)
 
   has_and_belongs_to_many :targets
 
-  validates :activity,  presence:     { message: Proc.new{ presence_msg(:activity)  } }
+  validates :activity,  presence:     { message: Proc.new{ presence_msg(:activity)    } }
   
-  validates :date,      presence:     { message: Proc.new{ presence_msg(:date)      } }
+  validates :date,      presence:     { message: Proc.new{ presence_msg(:date)        } }
   
-  validates :duration,  presence:     { message: Proc.new{ presence_msg(:duration)  } }
-  validates :duration,  numericality: { message: Proc.new{ duration_numeric_msg     } }
+  validates :duration,  presence:     { message: Proc.new{ presence_msg(:duration)    } }
+  validates :duration,  numericality: { message: Proc.new{ numeric_msg(:duration)     } }
   
-  validates :intensity, presence:     { message: Proc.new{ presence_msg(:intensity) } }
+  validates :intensity, presence:     { message: Proc.new{ presence_msg(:intensity)   } }
   validates :intensity, inclusion:    { in: INTENSITIES , 
-                                        message: Proc.new{ intensity_content_msg    } },
+                                        message: Proc.new{ intensity_content_msg      } },
                                         allow_nil: true
 
   validate  :paced_attributes              
 
   validates :pace_metric, inclusion:  { in: METRICS , 
-                                        message: Proc.new{ metric_content_msg       } },
+                                        message: Proc.new{ metric_content_msg(:pace)  } },
                                         allow_nil: true
 
   def flash_error
@@ -58,26 +60,6 @@ class Workout < ActiveRecord::Base
         :distance,
         :distance_metric
       ]
-    end
-
-    def presence_msg(attribute)
-      'a workout must have ' + indefinite_articlerize(attribute.to_s)
-    end
-
-    def duration_numeric_msg
-      'duration must be a number'
-    end
-
-    def intensity_content_msg
-      'intensity must be one of bruce lee, high, medium, low'
-    end
-
-    def metric_content_msg
-      'metric must be either min/km or min/mile'
-    end
-
-    def indefinite_articlerize(params_word)
-      %w(a e i o u).include?(params_word[0].downcase) ? "an #{params_word}" : "a #{params_word}"
     end
 
   end

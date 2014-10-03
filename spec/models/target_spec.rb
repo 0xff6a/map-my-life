@@ -15,14 +15,14 @@ RSpec.describe Target, :type => :model do
       target = FactoryGirl.build(:target, pace: 'xyz')
       expect(target).not_to be_valid
       expect(target.errors.messages[:pace]).to include(
-          'the pace must be numeric')
+          'pace must be a number')
     end
 
     it 'should not be valid without a pace metric' do
       target = FactoryGirl.build(:target, pace_metric: nil)
       expect(target).not_to be_valid
       expect(target.errors.messages[:pace_metric]).to include(
-          'a pace must have a metric')
+          'a target must have a pace metric')
     end
 
     it 'should not be valid without a pace metric' do
@@ -43,14 +43,14 @@ RSpec.describe Target, :type => :model do
       target = FactoryGirl.build(:target, distance: 'xyz')
       expect(target).not_to be_valid
       expect(target.errors.messages[:distance]).to include(
-          'distance must be numeric')
+          'distance must be a number')
     end
 
     it 'should not be valid without a distance metric' do
       target = FactoryGirl.build(:target, distance_metric: nil)
       expect(target).not_to be_valid
       expect(target.errors.messages[:distance_metric]).to include(
-          'a distance must have a metric')
+          'a target must have a distance metric')
     end
 
     it 'should not be valid without a due date' do
