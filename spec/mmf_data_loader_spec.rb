@@ -85,8 +85,11 @@ describe MMFDataLoader do
 
   end
 
-  xit 'can create workouts from MMF data' do
+  context 'creating objects' do
 
+    xit 'can create workouts from MMF data' do
+      
+    end
+    
   end
-
 end

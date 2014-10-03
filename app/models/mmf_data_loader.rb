@@ -4,7 +4,7 @@ class MMFDataLoader
 
   VALID_FORMATS = [ :raw, :params, :object]
   
-  ACTIVITY_IDS  = { 
+  ACTIVITIES    = { 
                     '16' => 'Running'      
                   }
 
@@ -42,7 +42,7 @@ class MMFDataLoader
   end
 
   def activity_from(raw_workout)
-    ACTIVITY_IDS[raw_workout['_links']['activity_type'][0]['id']]
+    ACTIVITIES[raw_workout['_links']['activity_type'][0]['id']]
   end
 
   def date_from(raw_workout)

@@ -5,22 +5,22 @@ class Workout < ActiveRecord::Base
 
   has_and_belongs_to_many :targets
 
-  validates :activity,  presence:     { message: 'a workout must have an activity' }
+  validates :activity,  presence:     { message: Proc.new{ presence_msg(:activity)  } }
   
-  validates :date,      presence:     { message: 'a workout must have a date' }
+  validates :date,      presence:     { message: Proc.new{ presence_msg(:date)      } }
   
-  validates :duration,  presence:     { message: 'a workout must have a duration' }
-  validates :duration,  numericality: { message: 'duration must be a number' }
+  validates :duration,  presence:     { message: Proc.new{ presence_msg(:duration)  } }
+  validates :duration,  numericality: { message: Proc.new{ duration_numeric_msg     } }
   
-  validates :intensity, presence:     { message: 'a workout must have an intensity' }
+  validates :intensity, presence:     { message: Proc.new{ presence_msg(:intensity) } }
   validates :intensity, inclusion:    { in: INTENSITIES , 
-                                        message: 'intensity must be one of bruce lee, high, medium, low' },
+                                        message: Proc.new{ intensity_content_msg    } },
                                         allow_nil: true
 
   validate  :paced_attributes              
 
   validates :pace_metric, inclusion:  { in: METRICS , 
-                                        message: 'metric must be either min/km or min/mile' },
+                                        message: Proc.new{ metric_content_msg       } },
                                         allow_nil: true
 
   def flash_error
@@ -29,9 +29,9 @@ class Workout < ActiveRecord::Base
 
   def paced_attributes
     if pace.present?
-      errors.add(:pace_metric, 'a paced workout must have a metric') if !pace_metric.present?
-      errors.add(:distance, 'a paced workout must have a distance') if !distance.present?
-      errors.add(:distance_metric, 'a paced workout must have a distance metric') if !distance_metric.present?
+      errors.add(:pace_metric,     Proc.new{ pace_child_presence_msg(:metric) }) if !pace_metric.present?
+      errors.add(:distance,        Proc.new{ pace_child_presence_msg(:distance) }) if !distance.present?
+      errors.add(:distance_metric, Proc.new{ pace_child_presence_msg(:distance_metric) }) if !distance_metric.present?
     end
   end
 
@@ -60,6 +60,32 @@ class Workout < ActiveRecord::Base
       ]
     end
 
+    def presence_msg(attribute)
+      'a workout must have ' + indefinite_articlerize(attribute.to_s)
+    end
+
+    def duration_numeric_msg
+      'duration must be a number'
+    end
+
+    def intensity_content_msg
+      'intensity must be one of bruce lee, high, medium, low'
+    end
+
+    def metric_content_msg
+      'metric must be either min/km or min/mile'
+    end
+
+    def indefinite_articlerize(params_word)
+      %w(a e i o u).include?(params_word[0].downcase) ? "an #{params_word}" : "a #{params_word}"
+    end
+
+  end
+
+  private
+
+  def pace_child_presence_msg(child)
+    'a paced workout must have a ' + child.to_s.gsub('_',' ')
   end
 
 end
