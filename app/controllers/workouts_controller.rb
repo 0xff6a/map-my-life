@@ -1,7 +1,9 @@
 class WorkoutsController < ApplicationController
 
+  MMF = MMFDataLoader.new
+
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.reverse
   end
 
   def new
@@ -42,10 +44,7 @@ class WorkoutsController < ApplicationController
   end
 
   def load_from_mmf
-    mmf = MMFDataLoader.new
-    workouts = mmf.save_my_workouts_to_db
-
-    
+    MMF.save_my_workouts_to_db
     redirect_to '/'
   end
 
