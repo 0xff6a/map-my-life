@@ -62,8 +62,4 @@ class Target < ActiveRecord::Base
 
   end
 
-  private
-
-
-
 end

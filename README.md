@@ -5,17 +5,17 @@ Advanced analysis of my fitness activities using Ruby on Rails, Map My Run and J
 
 To Do:
 ------
+- Compare workouts vs target using VDOT metric
+http://www.runbayou.com/jackd.htm#NOTES
 - Set default metrics
 - Convert inputs to default metrics
 - Ability to change default metric
-- Ability to associate workouts to all relevant targets
 - Drag and drop interface for workouts and targets
 - Graphs for:
   - progress vs target
   - activity by day
   - activity dy day of week
   - etc
-
 
 Features
 --------
