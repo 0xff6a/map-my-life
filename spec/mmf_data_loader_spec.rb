@@ -3,7 +3,7 @@ require 'rails_helper'
 describe MMFDataLoader do
   
   let(:loader)  { MMFDataLoader.new   }
-  # let(:raw)     { loader.raw_workouts }
+  let(:raw)     { loader.raw_workouts }
 
   let(:data)    { [{ "start_datetime"=>"2013-12-26T10:46:39+00:00", 
                     "name"=>"Ran 9.74 km on 26/12/2013", 
@@ -24,7 +24,7 @@ describe MMFDataLoader do
                     "elapsed_time_total"=>3464.0, "metabolic_energy_total"=>4280232.0}
                 }] }
 
-  xcontext 'fetching data' do
+  context 'fetching data' do
 
     it 'can do retrieve a list of workouts from MMF' do
       workouts = loader.my_workouts(:raw)

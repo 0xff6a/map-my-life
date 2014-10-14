@@ -1,5 +1,8 @@
 class MMFDataLoader
 
+  DEFAULT_PACE_METRIC     = 'min/km'
+  DEFAULT_DISTANCE_METRIC = 'km'
+
   attr_reader :client
 
   VALID_FORMATS = [ :raw, :params, :object]
@@ -38,9 +41,9 @@ class MMFDataLoader
         duration:         duration_from(raw),
         intensity:        intensity_from(raw),
         pace:             pace_from(raw),
-        pace_metric:     'min/km',
+        pace_metric:      DEFAULT_PACE_METRIC,
         distance:         distance_from(raw),
-        distance_metric: 'km',
+        distance_metric:  DEFAULT_DISTANCE_METRIC,
         mmf_id:           mmf_id_from(raw)
       }
     end

@@ -5,9 +5,6 @@ Advanced analysis of my fitness activities using Ruby on Rails, Map My Run and J
 
 To Do:
 ------
-- Load workouts from MMF
-- Save MMF entries to DB
-- Save only new entries to DB
 - Set default metrics
 - Convert inputs to default metrics
 - Ability to change default metric
