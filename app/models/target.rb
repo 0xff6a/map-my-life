@@ -44,6 +44,10 @@ class Target < ActiveRecord::Base
       create(params[:target].permit(attributes))
     end
 
+    def link_workout(params)
+      find(params[:workout][:targets]).workouts << Workout.find(params[:id])
+    end
+
     private
 
     def attributes

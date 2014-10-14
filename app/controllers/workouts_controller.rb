@@ -55,9 +55,7 @@ class WorkoutsController < ApplicationController
   end
 
   def link_to_target
-    workout = Workout.find(params[:id])
-    target = Target.find(params[:workout][:targets])
-    target.workouts << workout
+    Target.link_workout(params)
     redirect_to '/'
   end
 
