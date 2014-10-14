@@ -33,18 +33,15 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-collection_matchers'
-  gem 'launchy'
   gem 'factory_girl_rails'
   gem 'warden'
   gem 'poltergeist'
-  gem 'simplecov'
   gem 'cucumber-rails', :require => false
 end
 
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 gem 'autoprefixer-rails'
 gem 'json'
-gem 'twilio-ruby'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'thin'
 gem 'mmf'

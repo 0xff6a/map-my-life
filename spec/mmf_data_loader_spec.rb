@@ -60,7 +60,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the duration' do
-      expect(loader.my_workouts(:params).first[:duration].to_i).to eq 57
+      expect(loader.my_workouts(:params).first[:duration]).to eq 58
     end
 
     it 'can get the intensity' do
@@ -68,7 +68,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the pace' do
-      expect(loader.my_workouts(:params).first[:pace].round(2)).to eq 5.56
+      expect(loader.my_workouts(:params).first[:pace]).to eq 5.56
     end
 
     it 'sets the pace metric to min/km' do
@@ -76,7 +76,7 @@ describe MMFDataLoader do
     end
 
     it 'can get the distance' do
-      expect(loader.my_workouts(:params).first[:distance].round(2)).to eq 9.74
+      expect(loader.my_workouts(:params).first[:distance]).to eq 9.74
     end
 
     it 'sets the distance metric to km' do
@@ -96,7 +96,7 @@ describe MMFDataLoader do
     end
 
     it 'the workout object created matches the data received' do
-      expect(loader.my_workouts(:object).first.distance.round(2)).to eq 9.74
+      expect(loader.my_workouts(:object).first.distance).to eq 9.74
     end
 
   end

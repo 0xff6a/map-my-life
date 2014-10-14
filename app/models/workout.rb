@@ -7,22 +7,22 @@ class Workout < ActiveRecord::Base
 
   has_and_belongs_to_many :targets
 
-  validates :activity,  presence:     { message: Proc.new{ presence_msg(:activity)    } }
+  validates :activity,  presence:     { message: Proc.new{ presence_msg(:activity)  } }
   
-  validates :date,      presence:     { message: Proc.new{ presence_msg(:date)        } }
+  validates :date,      presence:     { message: Proc.new{ presence_msg(:date)      } }
   
-  validates :duration,  presence:     { message: Proc.new{ presence_msg(:duration)    } }
-  validates :duration,  numericality: { message: Proc.new{ numeric_msg(:duration)     } }
+  validates :duration,  presence:     { message: Proc.new{ presence_msg(:duration)  } }
+  validates :duration,  numericality: { message: Proc.new{ numeric_msg(:duration)   } }
   
-  validates :intensity, presence:     { message: Proc.new{ presence_msg(:intensity)   } }
+  validates :intensity, presence:     { message: Proc.new{ presence_msg(:intensity) } }
   validates :intensity, inclusion:    { in: INTENSITIES , 
-                                        message: Proc.new{ intensity_content_msg      } },
+                                        message: Proc.new{ intensity_content_msg    } },
                                         allow_nil: true
 
   validate  :paced_attributes              
 
   validates :pace_metric, inclusion:  { in: METRICS , 
-                                        message: Proc.new{ metric_content_msg(:pace)  } },
+                                        message: Proc.new{ metric_content_msg(:pace)} },
                                         allow_nil: true
 
   def flash_error
@@ -31,8 +31,8 @@ class Workout < ActiveRecord::Base
 
   def paced_attributes
     if pace.present?
-      errors.add(:pace_metric,     Proc.new{ pace_child_presence_msg(:metric) }) if !pace_metric.present?
-      errors.add(:distance,        Proc.new{ pace_child_presence_msg(:distance) }) if !distance.present?
+      errors.add(:pace_metric,     Proc.new{ pace_child_presence_msg(:metric)         })  if !pace_metric.present?
+      errors.add(:distance,        Proc.new{ pace_child_presence_msg(:distance)       })  if !distance.present?
       errors.add(:distance_metric, Proc.new{ pace_child_presence_msg(:distance_metric) }) if !distance_metric.present?
     end
   end

@@ -7,23 +7,23 @@ class Target < ActiveRecord::Base
 
   has_and_belongs_to_many :workouts
   
-  validates :pace,            presence:     { message: Proc.new{ presence_msg(:pace)              } }
-  validates :pace,            numericality: { message: Proc.new{ numeric_msg(:pace)               } }
+  validates :pace,            presence:     { message: Proc.new{ presence_msg(:pace)            } }
+  validates :pace,            numericality: { message: Proc.new{ numeric_msg(:pace)             } }
 
-  validates :pace_metric,     presence:     { message: Proc.new{ presence_msg(:pace_metric)       } }
+  validates :pace_metric,     presence:     { message: Proc.new{ presence_msg(:pace_metric)     } }
   validates :pace_metric,     inclusion:    { in: PACE_METRICS , 
-                                              message: Proc.new{ metric_content_msg(:pace)        } },
+                                              message: Proc.new{ metric_content_msg(:pace)      } },
                                               allow_nil: true
 
-  validates :distance,        presence:     { message: Proc.new{ presence_msg(:distance)          } }                                        
-  validates :distance,        numericality: { message: Proc.new{ numeric_msg(:distance)           } }
+  validates :distance,        presence:     { message: Proc.new{ presence_msg(:distance)        } }                                        
+  validates :distance,        numericality: { message: Proc.new{ numeric_msg(:distance)         } }
 
-  validates :distance_metric, presence:     { message: Proc.new{ presence_msg(:distance_metric)   } }
+  validates :distance_metric, presence:     { message: Proc.new{ presence_msg(:distance_metric) } }
   validates :distance_metric, inclusion:    { in: DISTANCE_METRICS , 
-                                              message: Proc.new{ metric_content_msg(:distance)    } },
+                                              message: Proc.new{ metric_content_msg(:distance)  } },
                                               allow_nil: true
 
-  validates :due_date,        presence:     { message: Proc.new{ presence_msg(:due_date)          } } 
+  validates :due_date,        presence:     { message: Proc.new{ presence_msg(:due_date)        } } 
   validate  :future_due_date?
 
   def future_due_date?

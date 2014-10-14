@@ -16,6 +16,10 @@ class MMFDataLoader
     end
   end
 
+  def save_my_workouts_to_db
+    my_workouts(:object)
+  end
+
   def my_workouts(format = :raw)
     eval(format.to_s + '_workouts') if valid?(format)
   end
@@ -54,7 +58,7 @@ class MMFDataLoader
   end
 
   def duration_from(raw_workout)
-    seconds_to_min(raw_workout['aggregates']['active_time_total'])
+    seconds_to_min(raw_workout['aggregates']['active_time_total']).round(0)
   end
 
   def intensity_from(raw_workout)
@@ -62,11 +66,11 @@ class MMFDataLoader
   end
 
   def pace_from(raw_workout)
-    ms_to_min_km(raw_workout['aggregates']['speed_avg'])
+    ms_to_min_km(raw_workout['aggregates']['speed_avg']).round(2)
   end
 
   def distance_from(raw_workout)
-    m_to_km(raw_workout['aggregates']['distance_total'])
+    m_to_km(raw_workout['aggregates']['distance_total']).round(2)
   end
 
   def seconds_to_min(value)
