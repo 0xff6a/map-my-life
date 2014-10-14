@@ -8,3 +8,9 @@ Feature: Loading Workouts
       And no workouts have been added
     When I click "Load from MMF"
     Then I should see a list of workouts
+
+  Scenario: Not Duplicating Workouts
+    Given I have loaded my workouts from MMF
+      And I have not logged any new workouts
+    When I click "Load from MMF"
+    Then the number of workouts should not change

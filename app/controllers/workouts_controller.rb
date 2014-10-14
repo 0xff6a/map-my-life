@@ -43,7 +43,9 @@ class WorkoutsController < ApplicationController
 
   def load_from_mmf
     mmf = MMFDataLoader.new
-    mmf.save_my_workouts_to_db
+    workouts = mmf.save_my_workouts_to_db
+
+    
     redirect_to '/'
   end
 

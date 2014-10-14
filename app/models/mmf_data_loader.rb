@@ -17,7 +17,7 @@ class MMFDataLoader
   end
 
   def save_my_workouts_to_db
-    my_workouts(:object)
+    my_workouts(:object).map{ |workout| workout.save unless Workout.find_by(mmf_id: workout.mmf_id) }
   end
 
   def my_workouts(format = :raw)
@@ -40,13 +40,14 @@ class MMFDataLoader
         pace:             pace_from(raw),
         pace_metric:     'min/km',
         distance:         distance_from(raw),
-        distance_metric: 'km'
+        distance_metric: 'km',
+        mmf_id:           mmf_id_from(raw)
       }
     end
   end
 
   def object_workouts
-    params_workouts.map{ |params| Workout.create(params) }
+    params_workouts.map{ |params| Workout.new(params) }
   end
 
   def activity_from(raw_workout)
@@ -73,6 +74,10 @@ class MMFDataLoader
     m_to_km(raw_workout['aggregates']['distance_total']).round(2)
   end
 
+  def mmf_id_from(raw_workout)
+    raw_workout['_links']['self'][0]['id'].to_i
+  end
+
   def seconds_to_min(value)
     value.to_f / 60
   end
@@ -97,6 +102,7 @@ class MMFDataLoader
 end
 
 =begin
+MMF Units
 Measurement Type  Unit Value
 Distance  meters
 Speed meters/second

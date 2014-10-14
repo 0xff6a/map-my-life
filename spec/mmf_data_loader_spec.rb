@@ -40,7 +40,8 @@ describe MMFDataLoader do
                                           :pace,
                                           :pace_metric,
                                           :distance,
-                                          :distance_metric]
+                                          :distance_metric,
+                                          :mmf_id]
     end
 
   end
@@ -81,6 +82,10 @@ describe MMFDataLoader do
 
     it 'sets the distance metric to km' do
       expect(loader.my_workouts(:params).first[:distance_metric]).to eq 'km'
+    end
+
+    it 'can get the mmf id' do
+      expect(loader.my_workouts(:params).first[:mmf_id]).to eq 451005329
     end
 
   end
