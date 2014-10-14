@@ -6,8 +6,8 @@ When(/^I fill in the target details$/) do
   fill_in 'Due date', with: '2014-12-01'
 end
 
-Then(/^I should see the target next to my workout$/) do
-  within('.workout') do
+Then(/^I should see the target$/) do
+  within('.target') do
     expect(page).to have_content('4.05min/km')
     expect(page).to have_content('5.0km')
     expect(page).to have_content('2014-12-01')

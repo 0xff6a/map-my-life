@@ -1,6 +1,14 @@
-<%= link_to 'New Workout', new_workout_path %>
-<% if @workouts.any? %>
-  <%= render @workouts %>
-<% else %>
-  <h3>No workouts yet - shape up!</h3>
-<% end %>
+<section class='workouts_list'>
+
+  <% if @workouts.any? %>
+    <h3>Workouts</h3>
+    <%= render @workouts %>
+  <% else %>
+    <h3>No workouts yet - shape up!</h3>
+  <% end %>
+
+</section>
+
+<aside class='targets_list'>
+  <%= render 'targets/targets' %>
+</aside>

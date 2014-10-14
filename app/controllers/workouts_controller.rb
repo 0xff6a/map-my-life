@@ -4,6 +4,7 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.all.reverse
+    @targets = Target.all.reverse
   end
 
   def new
