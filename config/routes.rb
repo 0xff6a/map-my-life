@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'workouts#index'
 
-  get 'workouts/load_from_mmf' => 'workouts#load_from_mmf'
-
+  get   'workouts/load_from_mmf'      => 'workouts#load_from_mmf'
+  get   'workouts/:id/targets/link'   => 'workouts#new_link',       as: 'new_link'
+  post  'workouts/:id/targets/link'   => 'workouts#link_to_target', as: 'link_to_target'
+  
   resources :workouts
   resources :targets
 

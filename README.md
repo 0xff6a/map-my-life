@@ -9,6 +9,7 @@ To Do:
 - Convert inputs to default metrics
 - Ability to change default metric
 - Ability to associate workouts to all relevant targets
+- Drag and drop interface for workouts and targets
 - Graphs for:
   - progress vs target
   - activity by day

@@ -12,7 +12,8 @@
   </section>
 
   <nav>
- 
+
+    <%= link_to 'Link to Target', new_link_path(workout) %>
     <%= link_to 'Edit', edit_workout_path(workout) %>
     <%= link_to 'Delete', workout_path(workout), method: :delete %>
 

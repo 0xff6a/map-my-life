@@ -26,3 +26,16 @@ end
 Then(/^the target should not be saved$/) do
   expect(page).not_to have_content('4.03')
 end
+
+Given(/^I have added a target$/) do
+  FactoryGirl.create(:target)
+end
+
+When(/^I select a target$/) do
+  select Target.first.description, :from => "target_selector"
+  click_on 'Link'
+end
+
+Then(/^the distance between my best workout and target are displayed$/) do
+  expect(page).to have_css('.pct_achieved')
+end

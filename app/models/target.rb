@@ -34,6 +34,10 @@ class Target < ActiveRecord::Base
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
   end
 
+  def description
+    id.to_s + ' ' + distance.to_s + distance_metric + ' at ' + pace.to_s + pace_metric 
+  end
+
   class << self
 
     def create_from(params)

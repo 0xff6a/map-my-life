@@ -49,4 +49,16 @@ class WorkoutsController < ApplicationController
     redirect_to '/'
   end
 
+  def new_link
+    @workout = Workout.find(params[:id])
+    @targets = Target.all #filter_by(@workout)
+  end
+
+  def link_to_target
+    workout = Workout.find(params[:id])
+    target = Target.find(params[:workout][:targets])
+    target.workouts << workout
+    redirect_to '/'
+  end
+
 end
