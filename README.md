@@ -14,7 +14,7 @@ http://www.runbayou.com/jackd.htm#NOTES
 - Graphs for:
   - progress vs target
   - activity by day
-  - activity dy day of week
+  - activity by day of week
   - etc
 
 Features
