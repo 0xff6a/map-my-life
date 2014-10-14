@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   get 'workouts/load_from_mmf' => 'workouts#load_from_mmf'
 
-  resources :workouts do
-    resources :targets
-  end
+  resources :workouts
+  resources :targets
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
