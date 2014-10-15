@@ -37,5 +37,5 @@ When(/^I select a target$/) do
 end
 
 Then(/^the distance between my best workout and target are displayed$/) do
-  expect(page).to have_css('.pct_achieved')
+  within('.pct_achieved') { expect(page).to have_content('100.00%') }
 end

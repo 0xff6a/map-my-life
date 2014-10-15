@@ -38,6 +38,10 @@ class Target < ActiveRecord::Base
     id.to_s + ' ' + distance.to_s + distance_metric + ' at ' + pace.to_s + pace_metric 
   end
 
+  def pct_achieved
+    
+  end
+
   class << self
 
     def create_from(params)
