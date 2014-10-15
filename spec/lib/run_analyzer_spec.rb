@@ -23,4 +23,17 @@ describe RunAnalyzer do
 
   end
 
+  context 'VDOT benchmark' do
+
+    it 'should not have a benchmark intially' do
+      expect(RunAnalyzer.benchmark).to be nil
+    end
+
+    it 'a benchmark can be added' do
+      RunAnalyzer.benchmark = workout
+      expect(RunAnalyzer.benchmark).to eq workout
+    end
+
+  end
+
 end
