@@ -39,7 +39,7 @@ class Target < ActiveRecord::Base
   end
 
   def pct_achieved
-    
+    workouts.map{ |workout| RunAnalyzer.pct_difference(self, workout) }.max
   end
 
   class << self
