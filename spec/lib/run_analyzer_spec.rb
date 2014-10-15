@@ -34,6 +34,10 @@ describe RunAnalyzer do
       expect(RunAnalyzer.benchmark).to eq workout
     end
 
+    it 'can calculate a VDOT from the benchmark' do
+      expect(RunAnalyzer.vdot).to eq 2 
+    end
+
   end
 
 end
