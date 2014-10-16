@@ -2,14 +2,13 @@ class MMFDataLoader
 
   DEFAULT_PACE_METRIC     = 'min/km'
   DEFAULT_DISTANCE_METRIC = 'km'
+  VALID_FORMATS           = [:raw, :params, :object] 
+  ACTIVITIES              = 
+  { 
+    '16' => 'Running'      
+  }
 
   attr_reader :client
-
-  VALID_FORMATS = [ :raw, :params, :object]
-  
-  ACTIVITIES    = { 
-                    '16' => 'Running'      
-                  }
 
   def initialize
     @client = Mmf::Client.new do |config|

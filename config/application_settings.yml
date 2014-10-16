@@ -1,0 +1,29 @@
+development:
+  default_pace_metric: min/km
+  default_distance_metric: km
+  pace_metrics: 
+  - min/km
+  - min/mile
+  distance_metrics: 
+  - km
+  - mile
+
+test:
+  default_pace_metric: min/km
+  default_distance_metric: km
+  pace_metrics: 
+  - min/km
+  - min/mile
+  distance_metrics: 
+  - km
+  - mile
+
+production:
+  default_pace_metric: min/km
+  default_distance_metric: km
+  pace_metrics: 
+  - min/km
+  - min/mile
+  distance_metrics: 
+  - km
+  - mile
