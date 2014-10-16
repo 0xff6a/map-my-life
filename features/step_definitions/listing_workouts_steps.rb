@@ -43,7 +43,7 @@ Then(/^I should see the updated details listed$/) do
 end
 
 Given(/^I have added a workout$/) do
-  FactoryGirl.create(:workout)
+  FactoryGirl.create(:workout, duration: 20.75)
 end
 
 Given(/^I added an incorrect workout$/) do
