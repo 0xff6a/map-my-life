@@ -46,7 +46,7 @@ describe RunAnalyzer do
     before(:each) { RunAnalyzer.benchmark = workout }
 
     it 'should get a predicted runtime for a given distance from benchmark' do
-      expect(RunAnalyzer.predicted_time(10.0)).to eq 45
+      expect(RunAnalyzer.predicted_time(10.0).round(2)).to eq 41.49
     end
 
   end

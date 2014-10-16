@@ -10,20 +10,20 @@ class RunAnalyzer
       [1, (target.pace / workout.pace)].min * 100
     end
 
-    def predicted_time(distance, guess = 500)
+    def predicted_time(distance, t_min = 1, t_max = 1000)
       tolerance = 0.1
-      t_min, t_max = 0, 1500  
+      guess = 0.5 * (t_min + t_max)
       diff = benchmark_vo2_max - vo2_max(distance, guess)
       return guess if diff.abs < tolerance
-      diff > 0 ? predicted_time(distance, 0.5*(guess + t_max)) : predicted_time(distance, 0.5*(guess + t_min))
+      diff > 0 ? predicted_time(distance, t_min , guess) : predicted_time(distance, guess, t_max)
     end
 
     def benchmark_vo2_max
-      vo2_max(@benchmark.duration, @benchmark.distance)
+      vo2_max(@benchmark.distance, @benchmark.duration)
     end
 
-    def vo2_max(time, distance)
-      vo2(speed(time, distance)) / pct_max(time)
+    def vo2_max(distance, time)
+      vo2(speed(distance, time)) / pct_max(time)
     end
 
     private
@@ -38,7 +38,7 @@ class RunAnalyzer
       -4.60+(0.182258*speed)+(0.000104*speed*speed)
     end
 
-    def speed(time, distance)
+    def speed(distance, time)
       distance * 1000 / time
     end
 
