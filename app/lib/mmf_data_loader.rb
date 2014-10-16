@@ -1,7 +1,5 @@
 class MMFDataLoader
 
-  DEFAULT_PACE_METRIC     = 'min/km'
-  DEFAULT_DISTANCE_METRIC = 'km'
   VALID_FORMATS           = [:raw, :params, :object] 
   ACTIVITIES              = 
   { 
@@ -40,9 +38,9 @@ class MMFDataLoader
         duration:         duration_from(raw),
         intensity:        intensity_from(raw),
         pace:             pace_from(raw),
-        pace_metric:      DEFAULT_PACE_METRIC,
+        pace_metric:      ApplicationSettings.config['default_pace_metric'],
         distance:         distance_from(raw),
-        distance_metric:  DEFAULT_DISTANCE_METRIC,
+        distance_metric:  ApplicationSettings.config['default_distance_metric'],
         mmf_id:           mmf_id_from(raw)
       }
     end

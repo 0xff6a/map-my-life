@@ -3,7 +3,6 @@ class Workout < ActiveRecord::Base
   extend ValidationMessages
 
   INTENSITIES = %w(bruce lee high medium low)
-  METRICS     = %w(min/km min/mile)
 
   has_and_belongs_to_many :targets
 
@@ -21,7 +20,7 @@ class Workout < ActiveRecord::Base
 
   validate  :paced_attributes              
 
-  validates :pace_metric, inclusion:  { in: METRICS , 
+  validates :pace_metric, inclusion:  { in: ApplicationSettings.config['pace_metrics'] , 
                                         message: Proc.new{ metric_content_msg(:pace)} },
                                         allow_nil: true
 

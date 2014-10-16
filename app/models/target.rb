@@ -2,16 +2,13 @@ class Target < ActiveRecord::Base
 
   extend ValidationMessages
 
-  PACE_METRICS     = %w(min/km min/mile)
-  DISTANCE_METRICS = %w(km mile)
-
   has_and_belongs_to_many :workouts
   
   validates :pace,            presence:     { message: Proc.new{ presence_msg(:pace)            } }
   validates :pace,            numericality: { message: Proc.new{ numeric_msg(:pace)             } }
 
   validates :pace_metric,     presence:     { message: Proc.new{ presence_msg(:pace_metric)     } }
-  validates :pace_metric,     inclusion:    { in: PACE_METRICS , 
+  validates :pace_metric,     inclusion:    { in: ApplicationSettings.config['pace_metrics'], 
                                               message: Proc.new{ metric_content_msg(:pace)      } },
                                               allow_nil: true
 
@@ -19,7 +16,7 @@ class Target < ActiveRecord::Base
   validates :distance,        numericality: { message: Proc.new{ numeric_msg(:distance)         } }
 
   validates :distance_metric, presence:     { message: Proc.new{ presence_msg(:distance_metric) } }
-  validates :distance_metric, inclusion:    { in: DISTANCE_METRICS , 
+  validates :distance_metric, inclusion:    { in: ApplicationSettings.config['distance_metrics'], 
                                               message: Proc.new{ metric_content_msg(:distance)  } },
                                               allow_nil: true
 

@@ -2,8 +2,8 @@ module ValidationMessages
 
     METRICS = 
     {
-      distance: ['km', 'mile'],
-      pace:     ['min/km', 'min/mile']
+      distance: ApplicationSettings.config['distance_metrics'],
+      pace:     ApplicationSettings.config['pace_metrics']
     }
   
     def presence_msg(attribute)
