@@ -17,6 +17,8 @@ http://www.runbayou.com/jackd.htm#NOTES
   - activity by day of week
   - etc
 
+- Extract running math into gem and deploy
+
 Features
 --------
 This repository is a work in progress
