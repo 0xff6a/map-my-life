@@ -1,4 +1,30 @@
-<h1>iMapMyLife</h1>
-<%= link_to 'New Workout', new_workout_path %>
-<%= link_to 'Load from MMF', workouts_load_from_mmf_path, id: 'load_mmf_data' %>
-<%= link_to 'Add Target', new_target_path %> 
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <section class="container">
+   
+    <header class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">
+          <%= link_to 'New Workout', new_workout_path %>
+        </span>
+        <span class="icon-bar">
+          <%= link_to 'Load from MMF', workouts_load_from_mmf_path, id: 'load_mmf_data' %>
+        </span>
+        <span class="icon-bar">
+          <%= link_to 'Add Target', new_target_path %>
+        </span>
+      </button>
+
+      <a class="navbar-brand" href="/">
+        <span class="glyphicon glyphicon-road"></span>
+        iMapMyLife
+      </a>
+
+    </header>
+
+    <aside class="navbar-collapse collapse">
+
+    </aside><!--/.navbar-collapse -->
+
+  </section>
+</nav>

@@ -1,22 +1,23 @@
-<article class='workout'>
-  <section class='workout_details'>
+<article class='workout panel panel-default'>
+
+    <section class='workout_details panel-body'>
+      
+      <%= workout.id %>
+      <%= workout.activity %>
+      <%= workout.date %>
+      <%= workout.duration %>
+      <%= workout.intensity %>
+      <%= workout.pace %><%= workout.pace_metric %>
+      <%= workout.distance %><%= workout.distance_metric %>
     
-    <%= workout.id %>
-    <%= workout.activity %>
-    <%= workout.date %>
-    <%= workout.duration %>
-    <%= workout.intensity %>
-    <%= workout.pace %><%= workout.pace_metric %>
-    <%= workout.distance %><%= workout.distance_metric %>
-  
-  </section>
+    </section>
 
-  <nav>
+    <nav class='panel-footer'>
 
-    <%= link_to 'Link to Target', new_link_path(workout) %>
-    <%= link_to 'Edit', edit_workout_path(workout) %>
-    <%= link_to 'Delete', workout_path(workout), method: :delete %>
+      <%= link_to 'Link to Target', new_link_path(workout) %> | 
+      <%= link_to 'Edit', edit_workout_path(workout) %>
+      <%= link_to 'Delete', workout_path(workout), method: :delete %>
 
-  </nav>
-  
+    </nav>
+
 </article>

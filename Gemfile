@@ -46,7 +46,6 @@ gem 'momentjs-rails', '>= 2.8.1'
 gem 'thin'
 gem 'mmf'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
 
 group :production do
   gem 'rails_12factor'
