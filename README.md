@@ -5,8 +5,7 @@ Advanced analysis of my fitness activities using Ruby on Rails, Map My Run and J
 
 To Do:
 ------
-- Compare workouts vs target using VDOT metric
-http://www.runbayou.com/jackd.htm#NOTES
+- Widget for different workout paces based on VDOT
 - Set default metrics
 - Convert inputs to default metrics
 - Ability to change default metric
@@ -21,4 +20,4 @@ http://www.runbayou.com/jackd.htm#NOTES
 
 Features
 --------
-This repository is a work in progress
+This repository is a work in progress. Latest working build on heroku @ http://safe-coast-2914.herokuapp.com/
