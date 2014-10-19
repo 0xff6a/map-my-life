@@ -1,7 +1,10 @@
 <section class='workouts_list'>
 
   <% if @workouts.any? %>
-    <h3>Workouts</h3>
+    <h3>
+      <span class="glyphicon glyphicon-signal"></span>
+      Workouts
+    </h3>
     <%= render @workouts %>
   <% else %>
     <h3>No workouts yet - shape up!</h3>
