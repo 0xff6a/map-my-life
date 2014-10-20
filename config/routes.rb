@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'workouts#index'
+  root 'runs#index'
 
-  get   'workouts/load_from_mmf'      => 'workouts#load_from_mmf'
-  get   'workouts/:id/targets/link'   => 'workouts#new_link',       as: 'new_link'
-  post  'workouts/:id/targets/link'   => 'workouts#link_to_target', as: 'link_to_target'
-  
-  resources :workouts
-  resources :targets
+  get   'runs/load_from_mmf'      => 'runss#load_from_mmf'
+  get   'runs/:id/targets/link'   => 'runs#new_link',       as: 'new_link'
+  post  'runs/:id/targets/link'   => 'runs#link_to_target', as: 'link_to_target'
+
+  resources :runs do
+    resources :run_targets
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

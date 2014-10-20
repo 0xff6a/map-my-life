@@ -1,11 +1,12 @@
-class TargetsController < ApplicationController
+
+class RunTargetsController < ApplicationController
 
   def new
-    @target = Target.new
+    @target = RunTarget.new
   end
 
   def create
-    @target = Target.create_from(params)
+    @target = RunTarget.create_from(params)
 
     if @target.save
       redirect_to workouts_path

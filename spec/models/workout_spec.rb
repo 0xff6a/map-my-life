@@ -46,40 +46,7 @@ RSpec.describe Workout, :type => :model do
           'intensity must be one of bruce lee, high, medium, low')
     end
 
-    it 'the pace metric must be either min/km or min/mile' do
-      workout = FactoryGirl.build(:workout, pace_metric: 'xyz')
-      expect(workout).not_to be_valid
-      expect(workout.errors.messages[:pace_metric]).to include(
-          'metric must be either min/km or min/mile')
-    end
-
-    it 'if a workout has a pace it must have a metric' do
-      workout = FactoryGirl.build(:workout, pace_metric: nil)
-      expect(workout).not_to be_valid
-      expect(workout.errors.messages[:pace_metric]).to include(
-          'a paced workout must have a metric')
-    end
-
-    it 'if a workout has a pace it must have a distance' do
-      workout = FactoryGirl.build(:workout, distance: nil)
-      expect(workout).not_to be_valid
-      expect(workout.errors.messages[:distance]).to include(
-          'a paced workout must have a distance')
-    end
-
-    it 'if a workout has a distance it must have a distance metric' do
-      workout = FactoryGirl.build(:workout, distance_metric: nil)
-      expect(workout).not_to be_valid
-      expect(workout.errors.messages[:distance_metric]).to include(
-          'a paced workout must have a distance metric')
-    end
-
     it 'should be valid with an activity, date, duration, intensity' do
-      workout = FactoryGirl.build(:basic_workout)
-      expect(workout).to be_valid
-    end
-
-    it 'should be valid with an activity, date, duration, intensity, pace, distance and metrics' do
       workout = FactoryGirl.build(:workout)
       expect(workout).to be_valid
     end

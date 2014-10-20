@@ -18,24 +18,6 @@ class Workout < ActiveRecord::Base
                                         message: Proc.new{ intensity_content_msg    } },
                                         allow_nil: true
 
-  validate  :paced_attributes              
-
-  validates :pace_metric, inclusion:  { in: ApplicationSettings.config['pace_metrics'] , 
-                                        message: Proc.new{ metric_content_msg(:pace)} },
-                                        allow_nil: true
-
-  def flash_error
-    errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
-  end
-
-  def paced_attributes
-    if pace.present?
-      errors.add(:pace_metric,     Proc.new{ pace_child_presence_msg(:metric)         })  if !pace_metric.present?
-      errors.add(:distance,        Proc.new{ pace_child_presence_msg(:distance)       })  if !distance.present?
-      errors.add(:distance_metric, Proc.new{ pace_child_presence_msg(:distance_metric) }) if !distance_metric.present?
-    end
-  end
-
   class << self
 
     def create_from(params)
@@ -61,12 +43,6 @@ class Workout < ActiveRecord::Base
       ]
     end
 
-  end
-
-  private
-
-  def pace_child_presence_msg(child)
-    'a paced workout must have a ' + child.to_s.gsub('_',' ')
   end
 
 end

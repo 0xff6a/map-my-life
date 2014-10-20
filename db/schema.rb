@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014105243) do
+ActiveRecord::Schema.define(version: 20141020120733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "runs", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "targets", force: true do |t|
     t.datetime "created_at"
@@ -46,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141014105243) do
     t.decimal  "distance"
     t.string   "distance_metric"
     t.integer  "mmf_id"
+    t.string   "type"
   end
 
 end

@@ -3,16 +3,16 @@ class WorkoutsController < ApplicationController
   MMF = MMFDataLoader.new
 
   def index
-    @workouts = Workout.all.reverse
-    @targets = Target.all.reverse
+    @workouts = Run.all.reverse
+    @targets = RunTarget.all.reverse
   end
 
   def new
-    @workout = Workout.new
+    @workout = Run.new
   end
 
   def create
-    @workout = Workout.create_from(params)
+    @workout = Run.create_from(params)
     
     if @workout.save
       redirect_to(workouts_path)
@@ -24,11 +24,11 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    @workout = Workout.find(params[:id])
+    @workout = Run.find(params[:id])
   end
 
   def update
-    @workout = Workout.update_from(params)
+    @workout = Run.update_from(params)
     
     if @workout
       redirect_to(workouts_path)
@@ -40,7 +40,7 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    Workout.find(params[:id]).delete
+    Run.find(params[:id]).delete
     redirect_to workouts_path
   end
 
@@ -50,12 +50,12 @@ class WorkoutsController < ApplicationController
   end
 
   def new_link
-    @workout = Workout.find(params[:id])
-    @targets = Target.all #filter_by(@workout)
+    @workout = Run.find(params[:id])
+    @targets = RunTarget.all #filter_by(@workout)
   end
 
   def link_to_target
-    Target.link_workout(params)
+    RunTarget.link_workout(params)
     redirect_to '/'
   end
 
