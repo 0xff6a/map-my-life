@@ -5,13 +5,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'runs#index'
 
-  get   'runs/load_from_mmf'      => 'runss#load_from_mmf'
+  get   'runs/load_from_mmf'      => 'runs#load_from_mmf'
   get   'runs/:id/targets/link'   => 'runs#new_link',       as: 'new_link'
   post  'runs/:id/targets/link'   => 'runs#link_to_target', as: 'link_to_target'
 
-  resources :runs do
-    resources :run_targets
-  end
+  resources :runs 
+  resources :run_targets
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,23 @@
+<section class="panel panel-default">
+  <div class='panel-body'>
+    
+    <article class='run_target'>
+      <%= run_target.pace %><%= run_target.pace_metric %></br>
+      <%= run_target.distance %><%= run_target.distance_metric %></br>
+      <%= run_target.due_date %></br>
+    </article>
+
+    <aside class='pct_achieved'>
+      
+      <section class='progress'>
+        
+        <article class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='<%= run_target.pct_achieved %>' aria-valuemin='0' aria-valuemax='100' style='width: <%= format_pct(run_target.pct_achieved) %>;'>
+          <var><%= format_pct(run_target.pct_achieved) %></var>
+        </article>
+      
+      </section>
+
+    </aside>
+
+  </div>
+</section>

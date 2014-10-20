@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe RunAnalyzer do
   
-  let(:workout) { FactoryGirl.create(:workout, distance: 5, pace: 4.00, duration: 20) }
-  let(:target)  { FactoryGirl.create(:target, distance: 5, pace: 4.00)  }
+  let(:workout) { FactoryGirl.create(:run, distance: 5, pace: 4.00, duration: 20) }
+  let(:target)  { FactoryGirl.create(:run_target, distance: 5, pace: 4.00)  }
 
   before(:each) { RunAnalyzer.benchmark = workout }
 
@@ -14,12 +14,12 @@ describe RunAnalyzer do
     end
 
     it 'should return 100% if the target has been exceeded' do
-      best = FactoryGirl.create(:workout, distance: 5, duration: 17.5)
+      best = FactoryGirl.create(:run, distance: 5, duration: 17.5)
       expect(RunAnalyzer.pct_difference(target, best)).to eq 100
     end
 
     it 'should return the % difference if the target has not been met' do
-      slow = FactoryGirl.create(:workout, distance: 5, duration: 25)
+      slow = FactoryGirl.create(:run, distance: 5, duration: 25)
       expect(RunAnalyzer.pct_difference(target, slow)).to eq 80
     end
 
@@ -45,7 +45,7 @@ describe RunAnalyzer do
     end
 
     it 'should return the % difference between the target and predicted run time of same distance' do
-      long = FactoryGirl.create(:workout, distance: 10, duration: 44)
+      long = FactoryGirl.create(:run, distance: 10, duration: 44)
       expect(RunAnalyzer.pct_difference(target, long)).to eq 90.91
     end
 

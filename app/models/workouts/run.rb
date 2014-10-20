@@ -19,5 +19,31 @@ class Run < Workout
     errors.messages.map{ |msg_key, msg_val| "Error: #{msg_val.join(',')}\n" }.join('')
   end
 
+  class << self
+
+    def create_from(params)
+      create(params[:run].permit(attributes))
+    end
+
+    def update_from(params)
+      find(params[:id]).update(params[:run].permit(attributes))
+    end
+
+    private
+
+    def attributes
+      [
+        :activity, 
+        :date, 
+        :duration, 
+        :intensity,
+        :pace,
+        :pace_metric,
+        :distance,
+        :distance_metric
+      ]
+    end
+
+  end
 
 end

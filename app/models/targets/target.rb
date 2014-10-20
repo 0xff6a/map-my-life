@@ -17,24 +17,8 @@ class Target < ActiveRecord::Base
 
   class << self
 
-    def create_from(params)
-      create(params[:target].permit(attributes))
-    end
-
-    def link_workout(params)
+    def self.link_workout(params)
       find(params[:workout][:targets]).workouts << Workout.find(params[:id])
-    end
-
-    private
-
-    def attributes
-      [
-        :pace, 
-        :pace_metric, 
-        :distance, 
-        :distance_metric, 
-        :due_date
-      ]
     end
 
   end

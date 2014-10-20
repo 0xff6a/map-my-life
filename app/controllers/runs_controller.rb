@@ -1,39 +1,39 @@
-class WorkoutsController < ApplicationController
+class RunsController < ApplicationController
 
   MMF = MMFDataLoader.new
 
   def index
-    @workouts = Run.all.reverse
-    @targets = RunTarget.all.reverse
+    @runs = Run.all.reverse
+    @run_targets = RunTarget.all.reverse
   end
 
   def new
-    @workout = Run.new
+    @run = Run.new
   end
 
   def create
-    @workout = Run.create_from(params)
+    @run = Run.create_from(params)
     
-    if @workout.save
-      redirect_to(workouts_path)
+    if @run.save
+      redirect_to(runs_path)
     else 
-      flash[:error] = @workout.flash_error
+      flash[:error] = @run.flash_error
       render :new
     end
 
   end
 
   def edit
-    @workout = Run.find(params[:id])
+    @run = Run.find(params[:id])
   end
 
   def update
-    @workout = Run.update_from(params)
+    @run = Run.update_from(params)
     
-    if @workout
-      redirect_to(workouts_path)
+    if @run
+      redirect_to(runs_path)
     else  
-      flash[:error] = @workout.flash_error
+      flash[:error] = @run.flash_error
       render :edit
     end
     
@@ -41,22 +41,22 @@ class WorkoutsController < ApplicationController
 
   def destroy
     Run.find(params[:id]).delete
-    redirect_to workouts_path
+    redirect_to runs_path
   end
 
   def load_from_mmf
     MMF.save_my_workouts_to_db
-    redirect_to '/'
+    redirect_to runs_path
   end
 
   def new_link
-    @workout = Run.find(params[:id])
-    @targets = RunTarget.all #filter_by(@workout)
+    @run = Run.find(params[:id])
+    @run_targets = RunTarget.all #filter_by(@workout)
   end
 
   def link_to_target
-    RunTarget.link_workout(params)
-    redirect_to '/'
+    Target.link_workout(params)
+    redirect_to runs_path
   end
 
 end

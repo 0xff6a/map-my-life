@@ -1,4 +1,3 @@
-
 class RunTargetsController < ApplicationController
 
   def new
@@ -9,7 +8,7 @@ class RunTargetsController < ApplicationController
     @target = RunTarget.create_from(params)
 
     if @target.save
-      redirect_to workouts_path
+      redirect_to runs_path
     else
       flash[:error] = @target.flash_error
       render :new

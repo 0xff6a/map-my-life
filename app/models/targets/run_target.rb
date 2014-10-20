@@ -24,4 +24,24 @@ class RunTarget < Target
     workouts.map{ |workout| RunAnalyzer.pct_difference(self, workout) }.max
   end
 
+  class << self
+
+    def create_from(params)
+      create(params[:run_target].permit(attributes))
+    end
+
+    private
+
+    def attributes
+      [
+        :pace, 
+        :pace_metric, 
+        :distance, 
+        :distance_metric, 
+        :due_date
+      ]
+    end
+
+  end
+
 end

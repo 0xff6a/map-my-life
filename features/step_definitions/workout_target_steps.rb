@@ -7,7 +7,7 @@ When(/^I fill in the target details$/) do
 end
 
 Then(/^I should see the target$/) do
-  within('.target') do
+  within('.run_target') do
     expect(page).to have_content('4.05min/km')
     expect(page).to have_content('5.0km')
     expect(page).to have_content('2014-12-01')
@@ -28,7 +28,7 @@ Then(/^the target should not be saved$/) do
 end
 
 Given(/^I have added a target$/) do
-  FactoryGirl.create(:target)
+  FactoryGirl.create(:run_target)
 end
 
 When(/^I select a target$/) do

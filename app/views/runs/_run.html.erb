@@ -1,0 +1,31 @@
+<article class='run panel panel-default'>
+
+    <section class='run_details panel-body'>
+      <i class="fa fa-star"></i>
+      <table class='run_table'>
+        
+        <tr>
+          <td><%= run.activity %></td>
+          <td><%= run.date %></td>
+        </tr>
+        <tr>
+          <td><%= run.duration %></td>
+          <td><%= run.intensity %></td>
+        </tr>
+        <tr>
+          <td><%= run.pace %><%= run.pace_metric %></td>
+          <td><%= run.distance %><%= run.distance_metric %></td>
+        </tr>
+
+      </table>
+    </section>
+
+    <nav class='workout_nav panel-footer'>
+
+      <%= link_to 'Link to Target', new_link_path(run) %> | 
+      <%= link_to 'Edit', edit_run_path(run) %> | 
+      <%= link_to 'Delete', run_path(run), method: :delete %>
+
+    </nav>
+
+</article>

@@ -20,19 +20,19 @@
     <aside class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to new_workout_path do %>
+          <%= link_to new_run_path do %>
             <span class="glyphicon glyphicon-plus"></span>
             New Workout
           <% end %>
         </li>
         <li>
-          <%= link_to  workouts_load_from_mmf_path, id: 'load_mmf_data' do %>
+          <%= link_to  runs_load_from_mmf_path, id: 'load_mmf_data' do %>
             <span class="glyphicon glyphicon-cloud-download"></span>
             Load from MMF
           <% end %>
         </li>
         <li>
-          <%= link_to new_target_path do %>
+          <%= link_to new_run_target_path do %>
             <span class="glyphicon glyphicon-screenshot"></span>
             Add Target
           <% end %>
