@@ -17,7 +17,7 @@ class Target < ActiveRecord::Base
 
   class << self
 
-    def self.link_workout(params)
+    def link_workout(params)
       find(params[:workout][:targets]).workouts << Workout.find(params[:id])
     end
 
