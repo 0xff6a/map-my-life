@@ -2,8 +2,7 @@ $(document).ready(function() {
   var $chartHolder = $('#placeholder')
 
   $.get( '/graphs/sample_data', function(response) {
-    console.log(response);
-    $.plot($chartHolder, [response]);
+    $.plot($chartHolder, [response], { xaxis: {mode: 'time', timeformat: '%d/%m/%y'} });
   });
 });
 

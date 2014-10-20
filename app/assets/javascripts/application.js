@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require flot
+//= require flot-time
 //= require_tree .
 

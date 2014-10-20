@@ -8,7 +8,7 @@ class RunsController < ApplicationController
 
   def sample_data
     array = Run.all.map do |run| 
-      [run.date.to_time.to_i, run.pace.to_i] 
+      [run.date.to_time.to_i * 1000, run.pace.to_i] 
     end
     render json: array
   end
