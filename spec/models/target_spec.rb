@@ -4,55 +4,6 @@ RSpec.describe Target, :type => :model do
 
   context 'validations' do
 
-    it 'should not be valid without a pace' do
-      target = FactoryGirl.build(:target, pace: nil)
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:pace]).to include(
-          'a target must have a pace')
-    end
-
-    it 'should have a numeric pace' do
-      target = FactoryGirl.build(:target, pace: 'xyz')
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:pace]).to include(
-          'pace must be a number')
-    end
-
-    it 'should not be valid without a pace metric' do
-      target = FactoryGirl.build(:target, pace_metric: nil)
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:pace_metric]).to include(
-          'a target must have a pace metric')
-    end
-
-    it 'should not be valid without a pace metric' do
-      target = FactoryGirl.build(:target, pace_metric: 'xyz')
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:pace_metric]).to include(
-          'metric must be either min/km or min/mile')
-    end
-
-    it 'should not be valid without a distance' do
-      target = FactoryGirl.build(:target, distance: nil)
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:distance]).to include(
-          'a target must have a distance')
-    end
-
-    it 'should have a numeric distance' do
-      target = FactoryGirl.build(:target, distance: 'xyz')
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:distance]).to include(
-          'distance must be a number')
-    end
-
-    it 'should not be valid without a distance metric' do
-      target = FactoryGirl.build(:target, distance_metric: nil)
-      expect(target).not_to be_valid
-      expect(target.errors.messages[:distance_metric]).to include(
-          'a target must have a distance metric')
-    end
-
     it 'should not be valid without a due date' do
       target = FactoryGirl.build(:target, due_date: nil)
       expect(target).not_to be_valid
@@ -67,7 +18,7 @@ RSpec.describe Target, :type => :model do
           'due date must be in the future')
     end
 
-    it 'should be valid with pace, distance, metric, due date and a workout' do
+    it 'should be valid with a due date' do
       target = FactoryGirl.build(:target)
       expect(target).to be_valid
     end
