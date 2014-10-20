@@ -1,15 +1,23 @@
 <article class='workout panel panel-default'>
 
     <section class='workout_details panel-body'>
-      
-      <%= workout.id %>
-      <%= workout.activity %>
-      <%= workout.date %>
-      <%= workout.duration %>
-      <%= workout.intensity %>
-      <%= workout.pace %><%= workout.pace_metric %>
-      <%= workout.distance %><%= workout.distance_metric %>
-    
+      <i class="fa fa-star"></i>
+      <table class='workout_table'>
+        
+        <tr>
+          <td><%= workout.activity %></td>
+          <td><%= workout.date %></td>
+        </tr>
+        <tr>
+          <td><%= workout.duration %></td>
+          <td><%= workout.intensity %></td>
+        </tr>
+        <tr>
+          <td><%= workout.pace %><%= workout.pace_metric %></td>
+          <td><%= workout.distance %><%= workout.distance_metric %></td>
+        </tr>
+
+      </table>
     </section>
 
     <nav class='workout_nav panel-footer'>
