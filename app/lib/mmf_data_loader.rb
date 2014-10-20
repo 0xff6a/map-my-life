@@ -17,7 +17,7 @@ class MMFDataLoader
   end
 
   def save_my_workouts_to_db
-    my_workouts(:object).map{ |workout| workout.save unless Workout.find_by(mmf_id: workout.mmf_id) }
+    my_workouts(:object).map{ |workout| workout.save unless Run.find_by(mmf_id: workout.mmf_id) }
   end
 
   def my_workouts(format = :raw)
@@ -47,7 +47,7 @@ class MMFDataLoader
   end
 
   def object_workouts
-    params_workouts.map{ |params| Workout.new(params) }
+    params_workouts.map{ |params| Run.new(params) }
   end
 
   def activity_from(raw_workout)
