@@ -4,7 +4,7 @@ class Target < ActiveRecord::Base
 
   has_and_belongs_to_many :workouts
 
-  validates :due_date,        presence:     { message: Proc.new{ presence_msg(:due_date)        } } 
+  validates :due_date, presence: { message: Proc.new{ presence_msg(:due_date)  } } 
   validate  :future_due_date?
 
   def future_due_date?

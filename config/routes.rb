@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'runs#index'
 
+
+  get   'graphs/test'             => 'runs#test', as: 'test'
   get   'runs/load_from_mmf'      => 'runs#load_from_mmf'
   get   'runs/:id/targets/link'   => 'runs#new_link',       as: 'new_link'
   post  'runs/:id/targets/link'   => 'runs#link_to_target', as: 'link_to_target'

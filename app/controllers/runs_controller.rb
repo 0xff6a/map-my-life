@@ -2,6 +2,10 @@ class RunsController < ApplicationController
 
   MMF = MMFDataLoader.new
 
+  def test
+    
+  end
+
   def index
     @runs = Run.all.reverse
     @run_targets = RunTarget.all.reverse
