@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'runs#index'
 
 
-  get   'graphs/test'             => 'runs#test', as: 'test'
+  get   'graphs/test'                     => 'runs#test', as: 'test'
+  get   'graphs/sample_data'              => 'runs#sample_data', as: 'sample_data'
+
   get   'runs/load_from_mmf'      => 'runs#load_from_mmf'
   get   'runs/:id/targets/link'   => 'runs#new_link',       as: 'new_link'
   post  'runs/:id/targets/link'   => 'runs#link_to_target', as: 'link_to_target'

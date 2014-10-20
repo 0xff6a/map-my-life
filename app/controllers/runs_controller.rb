@@ -2,9 +2,17 @@ class RunsController < ApplicationController
 
   MMF = MMFDataLoader.new
 
+  #-----Spike for graph functionality---------
   def test
-    
   end
+
+  def sample_data
+    array = Run.all.map do |run| 
+      [run.date.to_time.to_i, run.pace.to_i] 
+    end
+    render json: array
+  end
+  #-----Spike for graph functionality---------
 
   def index
     @runs = Run.all.reverse
