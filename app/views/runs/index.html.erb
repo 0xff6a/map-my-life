@@ -1,4 +1,4 @@
-<section class='workouts_list'>
+<section class='workouts_list col-md-6'>
 
   <% if @runs.any? %>
     <h3>
@@ -12,14 +12,18 @@
 
 </section>
 
-<aside class='targets_list affix'>
+<aside>
 
-  <%= render 'run_targets/targets' %>
+  <article class='targets_list col-md-3 affix'>
 
-</aside>
+    <%= render 'run_targets/targets' %>
 
-<aside class='training_pace affix'>
+  </article>
 
-  <%= render 'runs/training_pace' %>
+  <article class='training_pace col-md-3 affix'>
+
+    <%= render 'runs/training_pace' %>
+
+  </article>
 
 </aside>
