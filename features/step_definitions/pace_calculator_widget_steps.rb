@@ -14,11 +14,11 @@ end
 
 Then(/^the correct training paces based on my benchmark$/) do
   within('.training_pace') do
-    expect(page).to have_content('5.08')
-    expect(page).to have_content('4.16')
-    expect(page).to have_content('3.5')
-    expect(page).to have_content('3.33')
-    expect(page).to have_content('5.48')
+    expect(page).to have_content('13.36')
+    expect(page).to have_content('11.48')
+    expect(page).to have_content('10.52')
+    expect(page).to have_content('10.11')
+    expect(page).to have_content('14.51')
   end
 end
 

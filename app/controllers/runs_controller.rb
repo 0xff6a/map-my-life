@@ -22,6 +22,7 @@ class RunsController < ApplicationController
       RunAnalyzer.set_benchmark_from(@runs)
       @paces =        RunAnalyzer.training_paces
     end
+    
   end
 
   def new
