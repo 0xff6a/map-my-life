@@ -16,6 +16,11 @@ describe RunAnalyzer do
       expect(RunAnalyzer.benchmark).to eq w1
     end
 
+    it 'returns if no workouts are passed' do
+      RunAnalyzer.set_benchmark_from([])
+      expect(RunAnalyzer.benchmark).to eq workout
+    end
+
   end
 
   context 'Equal distance comparison' do

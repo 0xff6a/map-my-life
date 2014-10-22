@@ -17,7 +17,11 @@ class RunsController < ApplicationController
   def index
     @runs =         Run.all.reverse
     @run_targets =  RunTarget.all.reverse
-    @paces =        RunAnalyzer.training_paces
+
+    if @runs.any?
+      RunAnalyzer.set_benchmark_from(@runs)
+      @paces =        RunAnalyzer.training_paces
+    end
   end
 
   def new

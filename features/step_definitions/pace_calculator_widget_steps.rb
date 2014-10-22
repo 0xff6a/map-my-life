@@ -21,3 +21,12 @@ Then(/^the correct training paces based on my benchmark$/) do
     expect(page).to have_content('5.48')
   end
 end
+
+Given(/^I have not logged any workouts$/) do
+  #Nothing to do here
+end
+
+Then(/^I should see a message prompting me to add a workout$/) do
+  expect(page).to have_content(
+      'Please log at least one workout to benchmark your training paces')
+end

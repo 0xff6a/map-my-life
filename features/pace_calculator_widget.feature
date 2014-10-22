@@ -5,6 +5,11 @@ Feature: Loading Workouts
 
   Scenario: Training Paces Widegt
     Given I am on the homepage
-      And I have logged at least one workout
+      And I have not logged any workouts
+    Then I should see a message prompting me to add a workout
+
+  Scenario: Training Paces Widegt
+    Given I have logged at least one workout
+      And I am on the homepage
     Then I should see a training pace widget
       And the correct training paces based on my benchmark
