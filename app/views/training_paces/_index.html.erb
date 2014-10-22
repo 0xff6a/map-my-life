@@ -1,0 +1,16 @@
+<h3>
+  <i class="fa fa-calculator"></i>
+  Training Pace
+</h3>
+
+<section class="panel panel-default">
+  <div class='panel-body'>
+    <% if @runs.any? %>
+      <table>
+        <%= render @training_paces %>
+      </table>
+    <% else %>
+      <p>Please log at least one workout to benchmark your training paces</p>
+    <% end %>
+  </div>
+</section>
