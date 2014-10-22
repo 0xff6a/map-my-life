@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022152946) do
+ActiveRecord::Schema.define(version: 20141022155656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141022152946) do
     t.string   "name"
     t.text     "description"
     t.decimal  "multiplier_vo2"
+    t.decimal  "pace"
   end
 
   create_table "workouts", force: true do |t|

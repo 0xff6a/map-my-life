@@ -20,7 +20,8 @@ class RunsController < ApplicationController
 
     if @runs.any?
       RunAnalyzer.set_benchmark_from(@runs)
-      @paces =        RunAnalyzer.training_paces
+      TrainingPace.set_training_paces_using(RunAnalyzer)
+      @paces = TrainingPace.all
     end
     
   end

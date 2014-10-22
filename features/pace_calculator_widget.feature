@@ -10,6 +10,8 @@ Feature: Loading Workouts
 
   Scenario: Training Paces Widegt
     Given I have logged at least one workout
-      And I am on the homepage
+      And I have saved a training pace
+    When I visit the homepage
     Then I should see a training pace widget
       And the correct training paces based on my benchmark
+      And the description for each pace

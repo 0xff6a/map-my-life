@@ -3,13 +3,6 @@ class RunAnalyzer
   TIME_THRESHOLD = 0.0001
   T_MIN          = 1
   T_MAX          = 1000 
-  PACES          =  {
-                      easy:   0.7,
-                      tempo:  0.88,
-                      max:    1.0,
-                      speed:  1.1,
-                      long:   0.6
-                    }
 
   class << self
 
@@ -41,12 +34,12 @@ class RunAnalyzer
       vo2_max(@benchmark.distance, @benchmark.duration)
     end
 
-    def training_paces
-      PACES.reduce({}){ |hash, (pace, pct)| hash.merge( pace.to_sym => pace_from_pct_vo2max(pct) )  }
-    end
-
     def set_benchmark_from(workouts)
       @benchmark = workouts.sort{ |workout| vo2_max(workout.distance, workout.duration)}.last
+    end
+
+    def pace_from_pct_vo2max(pct)
+      speed_to_pace(speed_from_vo2max(benchmark_vo2_max * pct))
     end
 
     private
@@ -69,10 +62,6 @@ class RunAnalyzer
     
     def speed_from_vo2max(value)
       29.54 + 5.000663 * value - 0.007546 * value * value
-    end
-
-    def pace_from_pct_vo2max(pct)
-      speed_to_pace(speed_from_vo2max(benchmark_vo2_max * pct))
     end
 
     def speed_to_pace(speed)

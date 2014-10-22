@@ -3,9 +3,9 @@ require 'rails_helper'
 describe RunAnalyzer do
   
   let(:workout) { FactoryGirl.create(:run, distance: 5, pace: 4.00, duration: 20) }
-  let(:target)  { FactoryGirl.create(:run_target, distance: 5, pace: 4.00)  }
+  let(:target)  { FactoryGirl.create(:run_target, distance: 5, pace: 4.00)        }
 
-  before(:each) { RunAnalyzer.benchmark = workout }
+  before(:each) { RunAnalyzer.benchmark = workout                                 }
 
   context 'Setting the benchmark' do
 
@@ -63,32 +63,6 @@ describe RunAnalyzer do
     it 'should return the % difference between the target and predicted run time of same distance' do
       long = FactoryGirl.create(:run, distance: 10, duration: 44)
       expect(RunAnalyzer.pct_difference(target, long)).to eq 90.91
-    end
-
-  end
-
-  context 'Training paces' do
-
-    let(:paces) { RunAnalyzer.training_paces }
-
-    it 'should return the easy run pace' do
-      expect(paces[:easy].round(2)).to eq 5.14
-    end
-
-    it 'should return the temp run pace' do
-      expect(paces[:tempo].round(2)).to eq 4.27
-    end
-
-    it 'should return the VO2 max run pace' do
-      expect(paces[:max].round(2)).to eq 3.85
-    end
-
-    it 'should return the speed form run pace' do
-      expect(paces[:speed].round(2)).to eq 3.56
-    end
-
-    it 'should return the long run pace' do
-      expect(paces[:long].round(2)).to eq 5.81
     end
 
   end
