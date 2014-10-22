@@ -3,6 +3,13 @@ class RunAnalyzer
   TIME_THRESHOLD = 0.0001
   T_MIN          = 1
   T_MAX          = 1000 
+  PACES          =  {
+                      easy:   0.7,
+                      tempo:  0.88,
+                      max:    1.0,
+                      speed:  1.1,
+                      long:   0.6
+                    }
 
   class << self
 
@@ -35,9 +42,7 @@ class RunAnalyzer
     end
 
     def training_paces
-      {
-        easy: easy_pace
-      }
+      PACES.reduce({}){ |hash, (pace, pct)| hash.merge( pace.to_sym => pace_from_pct_vo2max(pct) )  }
     end
 
     private
@@ -57,13 +62,13 @@ class RunAnalyzer
     end
 
     #formulae taken from  http://www.runnersworld.co.uk/general/rws-training-pace-calculator/1676.html
-
+    
     def speed_from_vo2max(value)
       29.54 + 5.000663 * value - 0.007546 * value * value
     end
 
-    def easy_pace
-      speed_to_pace(speed_from_vo2max(benchmark_vo2_max * 0.7))
+    def pace_from_pct_vo2max(pct)
+      speed_to_pace(speed_from_vo2max(benchmark_vo2_max * pct))
     end
 
     def speed_to_pace(speed)
