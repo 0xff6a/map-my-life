@@ -51,4 +51,14 @@ describe RunAnalyzer do
 
   end
 
+  context 'Training paces' do
+
+    let(:paces) { RunAnalyzer.training_paces }
+
+    it 'should return the easy run pace' do
+      expect(paces[:easy].round(2)).to eq 5.14
+    end
+
+  end
+
 end
