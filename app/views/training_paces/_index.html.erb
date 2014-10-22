@@ -1,36 +1,44 @@
-<h3>
-  <i class="fa fa-calculator"></i>
-  Training Pace
-</h3>
+<section class='affix'>
 
-<section class="panel panel-default">
-  
-  <div class='panel-body'>
+  <h3>
+    <i class="fa fa-calculator"></i>
+    Training Pace
+  </h3>
+
+  <article class="panel panel-default">
     
-    <% if @runs.any? %>
-      <table>
-        <%= render @training_paces %>
-      </table>
-    <% else %>
-      <p>Please log at least one workout to benchmark your training paces</p>
-    <% end %>
+    <div class='panel-body'>
+      
+      <% if @runs.any? %>
+        <table>
+          <%= render @training_paces %>
+        </table>
+      <% else %>
+        <p>Please log at least one workout to benchmark your training paces</p>
+      <% end %>
 
-  </div>
+    </div>
+
+  </article>
 
 </section>
 
-<h3>
-  <i class="fa fa-info"></i>
-</h3>
+<section class='training_pace_info'>
 
-<section class="panel panel-default">
+  <h3>
+    <i class="fa fa-info"></i>
+  </h3>
 
-  <div class='panel-body'>
-    
-    <% @training_paces.each do |pace| %>
-      <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
-    <% end %>
+  <article class="panel panel-default">
 
-  </div>
+    <div class='panel-body'>
+      
+      <% @training_paces.each do |pace| %>
+        <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
+      <% end %>
+
+    </div>
+
+  </article>
 
 </section>
