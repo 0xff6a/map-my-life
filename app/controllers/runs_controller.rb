@@ -15,8 +15,9 @@ class RunsController < ApplicationController
   #-----Spike for graph functionality---------
 
   def index
-    @runs = Run.all.reverse
-    @run_targets = RunTarget.all.reverse
+    @runs =         Run.all.reverse
+    @run_targets =  RunTarget.all.reverse
+    @paces =        RunAnalyzer.training_paces
   end
 
   def new
