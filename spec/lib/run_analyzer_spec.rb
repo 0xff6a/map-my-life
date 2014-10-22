@@ -59,6 +59,22 @@ describe RunAnalyzer do
       expect(paces[:easy].round(2)).to eq 5.14
     end
 
+    it 'should return the temp run pace' do
+      expect(paces[:tempo].round(2)).to eq 4.27
+    end
+
+    it 'should return the VO2 max run pace' do
+      expect(paces[:max].round(2)).to eq 3.85
+    end
+
+    it 'should return the speed form run pace' do
+      expect(paces[:speed].round(2)).to eq 3.56
+    end
+
+    it 'should return the long run pace' do
+      expect(paces[:long].round(2)).to eq 5.81
+    end
+
   end
 
 end
