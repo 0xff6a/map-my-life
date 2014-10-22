@@ -18,7 +18,7 @@ describe RunAnalyzer do
 
     it 'returns if no workouts are passed' do
       RunAnalyzer.set_benchmark_from([])
-      expect(RunAnalyzer.benchmark).to eq workout
+      expect(RunAnalyzer.benchmark).to eq nil
     end
 
   end
