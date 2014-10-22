@@ -4,7 +4,9 @@
 </h3>
 
 <section class="panel panel-default">
+  
   <div class='panel-body'>
+    
     <% if @runs.any? %>
       <table>
         <%= render @training_paces %>
@@ -12,5 +14,23 @@
     <% else %>
       <p>Please log at least one workout to benchmark your training paces</p>
     <% end %>
+
   </div>
+
+</section>
+
+<h3>
+  <i class="fa fa-info"></i>
+</h3>
+
+<section class="panel panel-default">
+
+  <div class='panel-body'>
+    
+    <% @training_paces.each do |pace| %>
+      <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
+    <% end %>
+
+  </div>
+
 </section>
