@@ -7,7 +7,18 @@ describe RunAnalyzer do
 
   before(:each) { RunAnalyzer.benchmark = workout }
 
-  context 'equal distance comparison' do
+  context 'Setting the benchmark' do
+
+    it 'can set the benchmark from a list of workouts' do
+      w1 = double Workout, distance: 5, duration: 20
+      w2 = double Workout, distance: 5, duration: 25
+      RunAnalyzer.set_benchmark_from([w1, w2])
+      expect(RunAnalyzer.benchmark).to eq w1
+    end
+
+  end
+
+  context 'Equal distance comparison' do
 
     it 'should return 100% if the target has been met' do
       expect(RunAnalyzer.pct_difference(target, workout)).to eq 100
@@ -38,7 +49,7 @@ describe RunAnalyzer do
 
   end
 
-  context 'unequal distance comparison' do
+  context 'Unequal distance comparison' do
 
     it 'should get a predicted runtime for a given distance from benchmark' do
       expect(RunAnalyzer.predicted_time(10.0).round(2)).to eq 41.46

@@ -45,6 +45,10 @@ class RunAnalyzer
       PACES.reduce({}){ |hash, (pace, pct)| hash.merge( pace.to_sym => pace_from_pct_vo2max(pct) )  }
     end
 
+    def set_benchmark_from(workouts)
+      @benchmark = workouts.sort{ |workout| vo2_max(workout.distance, workout.duration)}.last
+    end
+
     private
 
     # formulae taken from http://www.simpsonassociatesinc.com/
