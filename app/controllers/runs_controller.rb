@@ -70,7 +70,7 @@ class RunsController < ApplicationController
 
   def new_link
     @run = Run.find(params[:id])
-    @run_targets = RunTarget.all #filter_by(@workout)
+    @run_targets = RunTarget.all
   end
 
   def link_to_target

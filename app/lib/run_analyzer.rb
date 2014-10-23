@@ -72,19 +72,3 @@ class RunAnalyzer
 
 end
 
-=begin
- var velEasy     = VO2ToVel(VO2Max * .7);
-  var velTempo   = VO2ToVel(VO2Max * .88);
-  var velMaximum = VO2ToVel(VO2Max);
-  var velSpeed   = VO2ToVel(VO2Max * 1.1);
-  var velxlong     = VO2ToVel(VO2Max * .6);
-  var velYasso = velMaximum * 1.95; 
-
-
-// Takes a VO2 measurement and converts it to a velocity.
-function  VO2ToVel (VO2) {
-  return (29.54 + 5.000663 * VO2 - 0.007546 * VO2 * VO2);
-}
-
-=end
-
