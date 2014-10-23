@@ -2,6 +2,8 @@
 
 #Runs
   #Training Paces
+  TrainingPace.destroy_all
+  
   TrainingPace.create(name: 'easy',
                       description:  'Top coaches and exercise physiologists believe that most ' +
                                     'runners should do 80 to 90 per cent of their weekly training ' +

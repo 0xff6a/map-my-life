@@ -1,46 +1,43 @@
-<section class='main_graph affix'>
-  <h3>
-    <i class="fa fa-area-chart"></i>
-    Performance
-  </h3>
-  <div id="placeholder" style="width:600px;height:300px"></div>
-</section>
+<section class='data col-md-6'>
 
-<section class='workouts_list col-md-6'>
-
-  <% if @runs.any? %>
-   
-    <header class='run_header affix col-md-6'>
+  <article class='main_graph col-md-12'>
       <h3>
-        <span class="glyphicon glyphicon-signal"></span>
-        Runs
+        <i class="fa fa-area-chart"></i>
+        Performance
       </h3>
-    </header>
 
-    <div class='run_container'>
-      <%= render @runs %>
-    </div>
-
-  <% else %>
-
-    <h3>No workouts yet - shape up!</h3>
-
-  <% end %>
-
-</section>
-
-<aside>
-
-  <article class='targets_list col-md-3 affix'>
-
-    <%= render 'run_targets/targets' %>
-
+      <div id="placeholder"></div>
   </article>
 
-  <article class='training_pace col-md-3'>
+  <article class='workouts_list col-md-12'>
+      <% if @runs.any? %>
+       
+        <header class='run_header'>
+          <h3>
+            <span class="glyphicon glyphicon-signal"></span>
+            Runs
+          </h3>
+        </header>
 
+        <div class='run_container'>
+          <%= render @runs %>
+        </div>
+
+      <% else %>
+        <h3>No workouts yet - shape up!</h3>
+      <% end %>
+  </article>
+
+</section>
+
+<aside class='helpers col-md-6'>
+
+  <article class='targets_list col-md-6'>
+    <%= render 'run_targets/targets' %>
+  </article>
+
+  <article class='training_pace col-md-6'>
     <%= render 'training_paces/index' %>
-
   </article>
 
 </aside>
