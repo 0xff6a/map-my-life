@@ -26,8 +26,6 @@ RSpec.describe ApplicationHelper, :type => :helper do
       expect(minutize(4.25)).to eq '4.15'
     end
 
-
-
   end
 
   context '#format_pct' do

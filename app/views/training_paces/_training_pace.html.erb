@@ -1,6 +1,6 @@
 <tr>
   <td><%= training_pace.name.capitalize %></td>
-  <td><%= training_pace.pace %></td>
+  <td><%= minutize(training_pace.pace) %>min/km</td>
   <td>
     <a href='#' class='training_pace_popover' tabindex='0' data-toggle='popover' data-trigger='focus' title='<%= training_pace.name.capitalize %>' data-content='<%= training_pace.description %>'>
       <i class='fa fa-info-circle'></i>
