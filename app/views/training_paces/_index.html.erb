@@ -22,23 +22,3 @@
   </article>
 
 </section>
-
-<section class='training_pace_detail'>
-
-  <h3>
-    <i class="fa fa-info"></i>
-  </h3>
-
-  <article class="panel panel-default">
-
-    <div class='panel-body'>
-      <% if @training_paces %>
-        <% @training_paces.each do |pace| %>
-          <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
-        <% end %>
-      <% end %>
-    </div>
-
-  </article>
-
-</section>
