@@ -32,8 +32,10 @@
   <article class="panel panel-default">
 
     <div class='panel-body'>
-      <% @training_paces.each do |pace| %>
-        <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
+      <% if @training_paces.any? %>
+        <% @training_paces.each do |pace| %>
+          <%= render partial: 'training_paces/description', locals: {training_pace: pace} %>
+        <% end %>
       <% end %>
     </div>
 
