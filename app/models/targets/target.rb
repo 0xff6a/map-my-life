@@ -18,6 +18,9 @@ class Target < ActiveRecord::Base
   class << self
 
     def link_workout(params)
+      puts 'HELLO'
+      puts params[:workout][:targets]
+      puts params[:id]
       find(params[:workout][:targets]).workouts << Workout.find(params[:id])
     end
 

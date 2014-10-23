@@ -66,6 +66,11 @@ class RunsController < ApplicationController
     redirect_to runs_path
   end
 
+  def api_link_to_target
+    Target.link_workout(params)
+    render json: { status: 'OK'}
+  end
+
   def graph_data
     render json: Run.generate_coordinates
   end

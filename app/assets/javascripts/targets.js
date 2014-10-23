@@ -12,11 +12,10 @@ $(document).ready(function() {
   function linkRunToTarget(ui, destination) {
     var runId    = ui.draggable.find('.run_id').text(),
         targetId = destination.find('.target_id').text(),
-        postUrl  = '/runs/' + runId + '/targets/link';
+        postUrl  = '/runs/' + runId + '/targets/api_link';
 
-        console.log(targetId);
-    $.post(postUrl, { workouts: { targets: targetId } }, function(response) {
-      console.log('hi');
+    $.post(postUrl, { workout: { targets: targetId } }, function(response) {
+      alert(response.status);
     });
   }
 });
