@@ -2,18 +2,6 @@ class RunsController < ApplicationController
 
   MMF = MMFDataLoader.new
 
-  #-----Spike for graph functionality---------
-  def test
-  end
-
-  def sample_data
-    array = Run.all.map do |run| 
-      [run.date.to_time.to_i * 1000, run.pace.to_i] 
-    end
-    render json: array
-  end
-  #-----Spike for graph functionality---------
-
   def index
     @runs =         Run.all.reverse
     @run_targets =  RunTarget.all.reverse
@@ -76,6 +64,10 @@ class RunsController < ApplicationController
   def link_to_target
     Target.link_workout(params)
     redirect_to runs_path
+  end
+
+  def graph_data
+    render json: Run.generate_coordinates
   end
 
 end

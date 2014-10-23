@@ -29,6 +29,10 @@ class Run < Workout
       find(params[:id]).update(params[:run].permit(attributes))
     end
 
+    def generate_coordinates
+      self.all.map{ |run| [run.date.to_time.to_i * 1000, run.pace.to_f] }
+    end
+
     private
 
     def attributes
