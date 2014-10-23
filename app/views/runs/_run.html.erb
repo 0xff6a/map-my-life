@@ -3,7 +3,6 @@
     <section class='run_details panel-body'>
       <i class="fa fa-star"></i>
       <table class='run_table'>
-        
         <tr>
           <td><%= run.activity %></td>
           <td><%= run.date %></td>
@@ -16,7 +15,9 @@
           <td><%= run.pace %><%= run.pace_metric %></td>
           <td><%= run.distance %><%= run.distance_metric %></td>
         </tr>
-
+        <tr class='hidden'>
+          <td class='run_id'><%= run.id %></td>
+        </tr>
       </table>
     </section>
 

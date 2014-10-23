@@ -1,18 +1,22 @@
-<section class="panel panel-default">
+<section class='run_target_panel panel panel-default'>
   <div class='panel-body'>
     
     <article class='run_target'>
       <p>
-        Goal:
+        <strong>Goal:</strong>
         <%= run_target.distance %><%= run_target.distance_metric %> @ 
         <%= run_target.pace %><%= run_target.pace_metric %>
       </p>
       <p>
-        Notes: 
+        <strong>Notes: </strong>
         <em><%= run_target.comment %></em>
       </p>
       <p>
-        Due date: <%= run_target.due_date %>
+        <strong>Due date:</strong>
+        <%= run_target.due_date %>
+      </p>
+      <p class='hidden'>
+        <var class='target_id'><%= run_target.id %></var>
       </p>
     </article>
 
