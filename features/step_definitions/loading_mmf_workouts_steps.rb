@@ -4,7 +4,7 @@ Then(/^I should see a list of workouts$/) do
 end
 
 Given(/^I have loaded my workouts from MMF$/) do
-  visit '/'
+  visit runs_path
 end
 
 Given(/^I have not logged any new workouts$/) do

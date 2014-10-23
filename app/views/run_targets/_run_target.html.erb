@@ -2,9 +2,18 @@
   <div class='panel-body'>
     
     <article class='run_target'>
-      <%= run_target.pace %><%= run_target.pace_metric %></br>
-      <%= run_target.distance %><%= run_target.distance_metric %></br>
-      <%= run_target.due_date %></br>
+      <p>
+        Goal:
+        <%= run_target.distance %><%= run_target.distance_metric %> @ 
+        <%= run_target.pace %><%= run_target.pace_metric %>
+      </p>
+      <p>
+        Notes: 
+        <em><%= run_target.comment %></em>
+      </p>
+      <p>
+        Due date: <%= run_target.due_date %>
+      </p>
     </article>
 
     <aside class='pct_achieved'>

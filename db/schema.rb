@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022155656) do
+ActiveRecord::Schema.define(version: 20141023210710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141022155656) do
     t.date     "due_date"
     t.integer  "workout_id"
     t.string   "type"
+    t.text     "comment"
   end
 
   add_index "targets", ["workout_id"], name: "index_targets_on_workout_id", using: :btree

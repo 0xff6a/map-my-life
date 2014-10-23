@@ -1,5 +1,5 @@
 Given(/^I am on the homepage$/) do
-  visit '/'
+  visit runs_path
 end
 
 Given(/^no workouts have been added$/) do
@@ -55,7 +55,7 @@ Then(/^the workout should be removed$/) do
 end
 
 Given(/^I create an invalid workout$/) do
-  visit '/'
+  visit runs_path
   click_on 'New Workout'
   fill_in 'Activity', with: 'Running'
   fill_in 'Date', with: ''

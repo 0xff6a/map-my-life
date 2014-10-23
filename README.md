@@ -5,17 +5,16 @@ Advanced analysis of my fitness activities using Ruby on Rails, Map My Run and J
 
 To Do:
 ------
-- Widget for different workout paces based on VDOT
-- Set default metrics
+- Status bar change colour by % achieved
 - Convert inputs to default metrics
 - Ability to change default metric
 - Drag and drop interface for workouts and targets
 - Graphs for:
+  - pace by distance
   - progress vs target
   - activity by day
   - activity by day of week
   - etc
-
 - Extract running math into gem and deploy
 
 Features

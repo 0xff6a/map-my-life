@@ -34,6 +34,7 @@ class RunTarget < Target
 
     def attributes
       [
+        :comment,
         :pace, 
         :pace_metric, 
         :distance, 
