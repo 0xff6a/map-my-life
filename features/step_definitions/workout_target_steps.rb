@@ -1,4 +1,5 @@
 When(/^I fill in the target details$/) do
+  fill_in 'Comment', with: 'my goal'
   fill_in 'Pace', with: 4.05
   fill_in 'Pace metric', with: 'min/km'
   fill_in 'Distance', with: 5
@@ -8,6 +9,7 @@ end
 
 Then(/^I should see the target$/) do
   within('.run_target') do
+    expect(page).to have_content('my goal')
     expect(page).to have_content('4.05min/km')
     expect(page).to have_content('5.0km')
     expect(page).to have_content('2014-12-01')

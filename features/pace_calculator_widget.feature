@@ -8,6 +8,7 @@ Feature: Loading Workouts
       And I have not logged any workouts
     Then I should see a message prompting me to add a workout
 
+  @javascript
   Scenario: Training Paces Widegt
     Given I have logged at least one workout
       And I have saved a training pace

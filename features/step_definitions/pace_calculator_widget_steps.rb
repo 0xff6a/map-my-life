@@ -32,5 +32,6 @@ When(/^I visit the homepage$/) do
 end
 
 Then(/^the description for each pace$/) do
+  page.find('.training_pace_popover').hover
   expect(page).to have_content('an easier pace')
 end
