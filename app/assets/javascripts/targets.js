@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     $.post(postUrl, { workout: { targets: targetId } }, function(response) {
       if(response.status === 'OK') {
-        // location.reload();
+        location.reload();
       } else {
         console.log('error in linking');
       }
