@@ -4,8 +4,11 @@ $(document).ready(function() {
                       });
 
   $( '.run_target_panel' ).droppable({  accept: '.run', 
+                                        hoverClass: 'highlight',
                                         drop: function(event, ui) {
-                                          linkRunToTarget(ui, $(this));
+                                          var $target = $(this);
+
+                                          linkRunToTarget(ui, $target);
                                         } 
                                       });
 
@@ -15,7 +18,11 @@ $(document).ready(function() {
         postUrl  = '/runs/' + runId + '/targets/api_link';
 
     $.post(postUrl, { workout: { targets: targetId } }, function(response) {
-      alert(response.status);
+      if(response.status === 'OK') {
+        // location.reload();
+      } else {
+        console.log('error in linking');
+      }
     });
   }
 });

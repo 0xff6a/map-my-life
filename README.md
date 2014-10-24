@@ -5,6 +5,7 @@ Advanced analysis of my fitness activities using Ruby on Rails, Map My Run and J
 
 To Do:
 ------
+- Display the benchmark at the top of the page
 - Status bar change colour by % achieved
 - Convert inputs to default metrics
 - Ability to change default metric
