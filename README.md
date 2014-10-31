@@ -9,7 +9,6 @@ To Do:
 - Status bar change colour by % achieved
 - Convert inputs to default metrics
 - Ability to change default metric
-- Drag and drop interface for workouts and targets
 - Graphs for:
   - pace by distance
   - progress vs target
